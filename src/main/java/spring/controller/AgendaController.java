@@ -22,8 +22,8 @@ public class AgendaController {
 	public ModelAndView getDepartamentos() {
 		ModelAndView model = new ModelAndView("home");
 		Categoria c = new Categoria();
-		c.setNombre("Director");
-		c.setDescripcion("Director de departamento");
+		c.setNombre("Sdasdas");
+		c.setDescripcion("ooooooo");
 		categoriaService.addCategoria(c);
 		return model;
 	}

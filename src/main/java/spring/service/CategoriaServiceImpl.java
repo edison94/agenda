@@ -3,14 +3,14 @@ package spring.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.dao.ICategoriaDAO;
+import spring.dao.ICategoriaDao;
 import spring.model.Categoria;
 
 @Service
 public class CategoriaServiceImpl implements ICategoriaService{
 	
 	@Autowired
-	private ICategoriaDAO dao;
+	private ICategoriaDao dao;
 	
 	public List<Categoria> listarCategorias() {
 		return null;
