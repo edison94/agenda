@@ -15,17 +15,13 @@ import spring.service.IDepartamentoService;
 public class AgendaController {
 	@Autowired
 	private ICategoriaService categoriaService;
-	
 	@Autowired
 	private IDepartamentoService departamentoService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getDepartamentos() {
 		ModelAndView model = new ModelAndView("home");
-		Categoria c = new Categoria();
-		c.setNombre("Sdasdas");
-		c.setDescripcion("ooooooo");
-		categoriaService.addCategoria(c);
+		System.out.println(departamentoService.get(1));
 		return model;
 	}
 	
