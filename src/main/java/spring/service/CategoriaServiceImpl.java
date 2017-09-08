@@ -13,23 +13,23 @@ public class CategoriaServiceImpl implements ICategoriaService{
 	private ICategoriaDAO dao;
 	
 	public List<Categoria> listarCategorias() {
-		return dao.listarCategorias();
+		return null;
 	}
 
 	public Categoria getCategoria(int id) {
-		return dao.getCategoria(id);
+		return dao.get(id);
 	}
 
 	public void addCategoria(Categoria categoria) {
-		dao.addCategoria(categoria);
+		dao.saveOrUpdate(categoria);
 	}
 
 	public void editCategoria(Categoria categoria) {
-		dao.editCategoria(categoria);
+		dao.saveOrUpdate(categoria);
 	}
 
 	public void deleteCategoria(int id) {
-		dao.deleteCategoria(id);
+		dao.delete(id);
 	}
 
 }
