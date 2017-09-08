@@ -2,13 +2,15 @@ package spring.dao;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import spring.model.Categoria;
-import spring.model.Departamento;
 
 public class CategoriaDaoImpl implements ICategoriaDao{
 
@@ -17,6 +19,8 @@ public class CategoriaDaoImpl implements ICategoriaDao{
 	private SessionFactory sessionFactory;
 	
 	public List<Categoria> listarCategorias() {
+		CriteriaBuilder builder = sessionFactory.getCurrentSession().getCriteriaBuilder();
+		CriteriaQuery<Categoria> criteria = builder.createQuery(Categoria.class);
 		@SuppressWarnings("unchecked")
 		List<Categoria> listCategoria = (List<Categoria>) sessionFactory.getCurrentSession()
 				.createCriteria(Categoria.class)
