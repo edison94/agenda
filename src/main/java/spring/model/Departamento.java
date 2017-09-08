@@ -6,8 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "departamento")
+@Table(name = "departamentos")
 public class Departamento {
+	@Id
+	int iddepartamento;
 	
 	@Column(name = "nombre")
 	private String nombre;

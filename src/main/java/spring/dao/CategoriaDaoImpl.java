@@ -2,14 +2,22 @@ package spring.dao;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import spring.model.Categoria;
 import spring.model.Departamento;
 
+@Repository
 public class CategoriaDaoImpl implements ICategoriaDao{
 
 	@Autowired
@@ -17,13 +25,17 @@ public class CategoriaDaoImpl implements ICategoriaDao{
 	private SessionFactory sessionFactory;
 	
 	public List<Categoria> listarCategorias() {
-		@SuppressWarnings("unchecked")
-		List<Categoria> listCategoria = (List<Categoria>) sessionFactory.getCurrentSession()
-				.createCriteria(Categoria.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-
-		return listCategoria;
-		
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Categoria> query = builder.createQuery(Categoria.class);
+        Root<Categoria> root = query.from(Categoria.class);
+        query.select(root);
+        Query<Categoria> q=session.createQuery(query);
+        List<Categoria> categorias =q.getResultList();
+        for (Categoria c : categorias) {
+            System.out.println(c);
+         }
+		return categorias;
 	}
 
 	public Categoria getCategoria(int id) {
