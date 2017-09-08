@@ -40,7 +40,17 @@ public class CategoriaDaoImpl implements ICategoriaDao{
 	}
 
 	public Categoria getCategoria(int id) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Categoria> query = builder.createQuery(Categoria.class);
+        Root<Categoria> root = query.from(Categoria.class);
+        query.select(root);
+        Query<Categoria> q=session.createQuery(query);
+        List<Categoria> categorias =q.getResultList();
+        for (Categoria c : categorias) {
+            System.out.println(c);
+         }
+		
 		return null;
 	}
 
