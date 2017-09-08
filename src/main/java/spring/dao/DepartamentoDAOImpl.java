@@ -13,7 +13,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-
 import spring.model.Departamento;
 
 @Repository
@@ -58,20 +57,15 @@ public class DepartamentoDAOImpl implements IDepartamentoDAO {
 		// TODO Auto-generated method stub
 
 	}
-
 	@Transactional
 	public Departamento get(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Departamento> query = builder.createQuery(Departamento.class);
 		Root<Departamento> root = query.from(Departamento.class);
-		query.select(root);
+		query.select(root).where(builder.equal(root.get("iddepartamento"), id));
 		Query<Departamento> q = session.createQuery(query);
-		List<Departamento> departamentos = q.getResultList();
-		for (Departamento departamento : departamentos) {
-			System.out.println(departamento);
-		}
-		return null;
+		return q.getSingleResult();
 	}
 
 }
