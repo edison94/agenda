@@ -8,23 +8,23 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import spring.model.Departamento;
+import spring.model.Empleado;
 
 /**
- * Home object for domain model class Departamentos.
- * @see .Departamentos
+ * Home object for domain model class Empleados.
+ * @see .Empleados
  * @author Hibernate Tools
  */
 @Stateless
-public class DepartamentoDAO {
+public class EmpleadoDAO {
 
-	private static final Log log = LogFactory.getLog(DepartamentoDAO.class);
+	private static final Log log = LogFactory.getLog(EmpleadoDAO.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Departamento transientInstance) {
-		log.debug("persisting Departamentos instance");
+	public void persist(Empleado transientInstance) {
+		log.debug("persisting Empleados instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -34,8 +34,8 @@ public class DepartamentoDAO {
 		}
 	}
 
-	public void remove(Departamento persistentInstance) {
-		log.debug("removing Departamentos instance");
+	public void remove(Empleado persistentInstance) {
+		log.debug("removing Empleados instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -45,10 +45,10 @@ public class DepartamentoDAO {
 		}
 	}
 
-	public Departamento merge(Departamento detachedInstance) {
-		log.debug("merging Departamentos instance");
+	public Empleado merge(Empleado detachedInstance) {
+		log.debug("merging Empleados instance");
 		try {
-			Departamento result = entityManager.merge(detachedInstance);
+			Empleado result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -57,10 +57,10 @@ public class DepartamentoDAO {
 		}
 	}
 
-	public Departamento findById(Integer id) {
-		log.debug("getting Departamentos instance with id: " + id);
+	public Empleado findById(Integer id) {
+		log.debug("getting Empleados instance with id: " + id);
 		try {
-			Departamento instance = entityManager.find(Departamento.class, id);
+			Empleado instance = entityManager.find(Empleado.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

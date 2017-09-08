@@ -8,23 +8,23 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import spring.model.Departamento;
+import spring.model.Persona;
 
 /**
- * Home object for domain model class Departamentos.
- * @see .Departamentos
+ * Home object for domain model class Personas.
+ * @see .Personas
  * @author Hibernate Tools
  */
 @Stateless
-public class DepartamentoDAO {
+public class PersonaDAO {
 
-	private static final Log log = LogFactory.getLog(DepartamentoDAO.class);
+	private static final Log log = LogFactory.getLog(PersonaDAO.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Departamento transientInstance) {
-		log.debug("persisting Departamentos instance");
+	public void persist(Persona transientInstance) {
+		log.debug("persisting Personas instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -34,8 +34,8 @@ public class DepartamentoDAO {
 		}
 	}
 
-	public void remove(Departamento persistentInstance) {
-		log.debug("removing Departamentos instance");
+	public void remove(Persona persistentInstance) {
+		log.debug("removing Personas instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -45,10 +45,10 @@ public class DepartamentoDAO {
 		}
 	}
 
-	public Departamento merge(Departamento detachedInstance) {
-		log.debug("merging Departamentos instance");
+	public Persona merge(Persona detachedInstance) {
+		log.debug("merging Personas instance");
 		try {
-			Departamento result = entityManager.merge(detachedInstance);
+			Persona result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -57,10 +57,10 @@ public class DepartamentoDAO {
 		}
 	}
 
-	public Departamento findById(Integer id) {
-		log.debug("getting Departamentos instance with id: " + id);
+	public Persona findById(Integer id) {
+		log.debug("getting Personas instance with id: " + id);
 		try {
-			Departamento instance = entityManager.find(Departamento.class, id);
+			Persona instance = entityManager.find(Persona.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {
