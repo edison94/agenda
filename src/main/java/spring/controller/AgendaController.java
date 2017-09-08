@@ -2,6 +2,7 @@ package spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,5 +27,21 @@ public class AgendaController {
 		c.setDescripcion("ooooooo");
 		categoriaService.addCategoria(c);
 		return model;
+	}
+	
+	@ModelAttribute("categoria")
+	public Categoria getCategoriaObjectNew() {
+		System.out.println("-- Genero una categoria nueva.--");
+		return new Categoria();
+	}
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)	
+	public String initForm() {
+		return "form1";
+	}
+	
+	@RequestMapping(value = "/addCategoria", method = RequestMethod.POST)		
+	public String altaCategoria() {
+		return "form2";
 	}
 }
