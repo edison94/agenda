@@ -8,8 +8,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "departamento")
 public class Departamento {
-	@Id
-	private int id;
 	
 	@Column(name = "nombre")
 	private String nombre;
