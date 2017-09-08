@@ -5,8 +5,11 @@ package spring.dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Repository;
 
 import spring.model.Categoria;
 
@@ -16,13 +19,13 @@ import spring.model.Categoria;
  * @author Hibernate Tools
  */
 @Stateless
-public class CategoriaDAO {
+public class CategoriaDAO{
 
 	private static final Log log = LogFactory.getLog(CategoriaDAO.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
-
+	@Transactional
 	public void persist(Categoria transientInstance) {
 		log.debug("persisting Categorias instance");
 		try {
