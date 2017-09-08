@@ -17,26 +17,30 @@ public class AgendaController {
 	private ICategoriaService categoriaService;
 	@Autowired
 	private IDepartamentoService departamentoService;
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView getDepartamentos() {
-		ModelAndView model = new ModelAndView("home");
-		System.out.println(departamentoService.get(1));
-		return model;
-	}
 	
 	@ModelAttribute("categoria")
 	public Categoria getCategoriaObjectNew() {
 		System.out.println("-- Genero una categoria nueva.--");
 		return new Categoria();
 	}
+	
+	@ModelAttribute("categoria")
+	public Categoria getDeObjectNew() {
+		System.out.println("-- Genero una categoria nueva.--");
+		return new Categoria();
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView getDepartamentos() {
+		return new ModelAndView("home");
+	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)	
+	@RequestMapping(value = "/categoria/new", method = RequestMethod.GET)	
 	public String initForm() {
 		return "form1";
 	}
 	
-	@RequestMapping(value = "/addCategoria", method = RequestMethod.POST)		
+	@RequestMapping(value = "/categoria/addCategoria", method = RequestMethod.POST)		
 	public String altaCategoria() {
 		return "form2";
 	}
