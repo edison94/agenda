@@ -12,10 +12,7 @@
 <body>
 
 	<div id="contenedor">
-		<h2>
-			SpringAgenda - Form1 <br />(Anotac + Model&View +
-			Model + RequestMapping)
-		</h2>
+		<h2>Formulario de Categorias</h2>
 		
 		<form:form method="post" modelAttribute="categoria"
 			action="addcategoria.htm">
