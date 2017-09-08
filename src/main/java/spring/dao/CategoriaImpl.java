@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import spring.model.Categoria;
 
 @Repository
-public class CategoriaImpl implements ICategoriaDao{
+public class CategoriaImpl implements ICategoriaDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;
