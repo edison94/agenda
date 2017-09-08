@@ -1,33 +1,36 @@
 package spring.controller;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> 1237e877d54519f70ba15012ba4daeef380a602f
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
+
 import antlr.collections.List;
-=======
+
 import spring.model.Categoria;
 import spring.service.ICategoriaService;
->>>>>>> 1237e877d54519f70ba15012ba4daeef380a602f
+
+import spring.service.IDepartamentoService;
 
 @Controller
 public class AgendaController {
 	@Autowired
 	private ICategoriaService categoriaService;
-	@RequestMapping(
-			value = "/", 
-			method = RequestMethod.GET)
+	
+	@Autowired
+	private IDepartamentoService departamentoService;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getDepartamentos() {
 		ModelAndView model = new ModelAndView("home");
 		Categoria c = new Categoria();
