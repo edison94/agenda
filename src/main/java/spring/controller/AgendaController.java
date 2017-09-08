@@ -8,14 +8,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import spring.model.Categoria;
 import spring.service.ICategoriaService;
+import spring.service.IDepartamentoService;
 
 @Controller
 public class AgendaController {
 	@Autowired
 	private ICategoriaService categoriaService;
-	@RequestMapping(
-			value = "/", 
-			method = RequestMethod.GET)
+	
+	@Autowired
+	private IDepartamentoService departamentoService;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getDepartamentos() {
 		ModelAndView model = new ModelAndView("home");
 		Categoria c = new Categoria();
