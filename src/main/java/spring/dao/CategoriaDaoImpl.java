@@ -6,6 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,12 +18,12 @@ import org.springframework.stereotype.Repository;
 import spring.model.Categoria;
 
 @Repository
-public class CategoriaDAOImpl implements ICategoriaDAO {
+public class CategoriaDaoImpl implements ICategoriaDao {
 
 	@Autowired
-	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
-
+	
+	@Transactional
 	public List<Categoria> list() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -37,17 +38,19 @@ public class CategoriaDAOImpl implements ICategoriaDAO {
 		return categorias;
 
 	}
-
+	
+	@Transactional
 	public void saveOrUpdate(Categoria cat) {
-		// TODO Auto-generated method stub
-
+		sessionFactory.getCurrentSession().saveOrUpdate(cat);
 	}
-
+	
+	@Transactional
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	@Transactional
 	public Categoria get(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
