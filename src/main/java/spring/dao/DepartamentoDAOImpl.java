@@ -16,15 +16,15 @@ import spring.model.Departamento;
 
 @Repository
 public class DepartamentoDAOImpl implements IDepartamentoDAO {
-	
+
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	public DepartamentoDAOImpl() {
-		
+
 	}
-	
+
 	public DepartamentoDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -45,14 +45,13 @@ public class DepartamentoDAOImpl implements IDepartamentoDAO {
 	public void saveOrUpdate(Departamento dept) {
 		sessionFactory.getCurrentSession().saveOrUpdate(dept);
 	}
-	
+
 	@Transactional
 	public void delete(int id) {
 		Departamento deptToDelete = new Departamento();
 		deptToDelete.setIddepartamento(id);
 		sessionFactory.getCurrentSession().delete(deptToDelete);
 	}
-	
 	@Transactional
 	public Departamento get(int id) {
 		Session session = sessionFactory.getCurrentSession();
