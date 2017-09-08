@@ -13,7 +13,7 @@ public class CategoriaServiceImpl implements ICategoriaService{
 	private ICategoriaDao dao;
 	
 	public List<Categoria> listarCategorias() {
-		return null;
+		return dao.list();
 	}
 
 	public Categoria getCategoria(int id) {
