@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -20,10 +21,15 @@ import org.springframework.web.servlet.view.JstlView;
 
 import spring.model.Categoria;
 import spring.model.Departamento;
+import spring.model.Direccion;
+import spring.model.Empleado;
+import spring.model.Persona;
+import spring.model.Telefono;
  
 @EnableWebMvc
 @Configuration
 @ComponentScan({ "spring" })
+@EnableTransactionManagement
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
  
 	@Override
@@ -62,9 +68,12 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Autowired
     @Bean(name = "sessionFactory")
     public SessionFactory getSessionFactory(DataSource dataSource) {
-    	System.out.println("creacion bean session factory");
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
+    	sessionBuilder.addAnnotatedClasses(Telefono.class);
+    	sessionBuilder.addAnnotatedClasses(Persona.class);
+    	sessionBuilder.addAnnotatedClasses(Direccion.class);
+    	sessionBuilder.addAnnotatedClasses(Empleado.class);
     	sessionBuilder.addAnnotatedClasses(Departamento.class);
     	sessionBuilder.addAnnotatedClasses(Categoria.class);
     	return sessionBuilder.buildSessionFactory();
