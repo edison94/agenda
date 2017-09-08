@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.model.Categoria;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 
 @Controller
 public class AgendaController {
+	
 	@Autowired
 	private ICategoriaService categoriaService;
 	
