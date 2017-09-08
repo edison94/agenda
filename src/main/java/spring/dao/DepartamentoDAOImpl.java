@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,20 +18,20 @@ import spring.model.Departamento;
 
 @Repository
 public class DepartamentoDAOImpl implements IDepartamentoDAO {
-	
+
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
 	public DepartamentoDAOImpl() {
-		
+
 	}
-	
+
 	public DepartamentoDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	
+	@Transactional
 	public List<Departamento> list() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -47,17 +47,19 @@ public class DepartamentoDAOImpl implements IDepartamentoDAO {
 
 	}
 
-	
-	public void saveOrUpdate(Departamento cat) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void saveOrUpdate(Departamento departamento) {
+		sessionFactory.getCurrentSession().saveOrUpdate(departamento);
 
 	}
 
+	@Transactional
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 
 	}
 
+	@Transactional
 	public Departamento get(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();

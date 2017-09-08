@@ -9,7 +9,7 @@ public interface IDepartamentoDAO {
 	
 	public Departamento get(int id);
 	
-	public void saveOrUpdate(Departamento user);
+	public void saveOrUpdate(Departamento departamento);
 	
 	public void delete(int id);
 }
