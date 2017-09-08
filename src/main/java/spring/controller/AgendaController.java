@@ -14,7 +14,6 @@ public class AgendaController {
 	
 	@Autowired
 	private ICategoriaService categoriaService;
-	
 	@Autowired
 	private IDepartamentoService departamentoService;
 

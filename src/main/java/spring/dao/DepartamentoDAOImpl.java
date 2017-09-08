@@ -6,7 +6,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -38,24 +37,20 @@ public class DepartamentoDAOImpl implements IDepartamentoDAO {
 		Root<Departamento> root = query.from(Departamento.class);
 		query.select(root);
 		Query<Departamento> q = session.createQuery(query);
-		List<Departamento> departamentos = q.getResultList();
-		for (Departamento departamento : departamentos) {
-			System.out.println(departamento);
-		}
-		return departamentos;
+		return q.getResultList();
 
 	}
 
 	@Transactional
-	public void saveOrUpdate(Departamento departamento) {
-		sessionFactory.getCurrentSession().saveOrUpdate(departamento);
-
+	public void saveOrUpdate(Departamento dept) {
+		sessionFactory.getCurrentSession().saveOrUpdate(dept);
 	}
 
 	@Transactional
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
+		Departamento deptToDelete = new Departamento();
+		deptToDelete.setIddepartamento(id);
+		sessionFactory.getCurrentSession().delete(deptToDelete);
 	}
 	@Transactional
 	public Departamento get(int id) {
