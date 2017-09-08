@@ -10,7 +10,7 @@
 
     <body>
         <div id="contenedor">
-            <h2>Elige categoria</h2>
+            <h2>Listado de Categorias</h2>
 
             <form:form method="POST" commandName="command">
                 <form:errors path="*" cssClass="destacado" element="div"/>
