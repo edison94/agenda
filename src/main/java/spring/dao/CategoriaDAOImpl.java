@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 import spring.model.Categoria;
 
 @Repository
-public class CategoriaDaoImpl implements ICategoriaDao{
+public class CategoriaDAOImpl implements ICategoriaDAO{
 
 	@Autowired
 	@Qualifier("sessionFactory")
