@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
@@ -15,7 +16,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import spring.model.Categoria;
-import spring.model.Departamento;
 
 @Repository
 public class CategoriaDaoImpl implements ICategoriaDao{
@@ -36,6 +36,7 @@ public class CategoriaDaoImpl implements ICategoriaDao{
             System.out.println(c);
          }
 		return categorias;
+
 	}
 
 	public Categoria getCategoria(int id) {

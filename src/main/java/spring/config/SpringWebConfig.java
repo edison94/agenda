@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import spring.model.Categoria;
 import spring.model.Departamento;
  
 @EnableWebMvc
@@ -61,9 +62,11 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Autowired
     @Bean(name = "sessionFactory")
     public SessionFactory getSessionFactory(DataSource dataSource) {
+    	System.out.println("creacion bean session factory");
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
     	sessionBuilder.addAnnotatedClasses(Departamento.class);
+    	sessionBuilder.addAnnotatedClasses(Categoria.class);
     	return sessionBuilder.buildSessionFactory();
     }
     
