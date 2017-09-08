@@ -31,13 +31,13 @@ public class AgendaController {
 	public ModelAndView getDepartamentos() {
 		ModelAndView model = new ModelAndView("home");
 		Categoria c = new Categoria();
-		c.setNombre("Director");
-		c.setDescripcion("Director de departamento");
+		c.setNombre("Sdasdas");
+		c.setDescripcion("ooooooo");
 		categoriaService.addCategoria(c);
 		return model;
 	}
 	//CREAR EN CONTROLLER GETCATEGORIA
-	@RequestMapping("/")
+	@RequestMapping("/categoria")
 	public ModelAndView handleRequest() throws Exception {
 		Object addCategoria;
 		List listUsers = ((Object) addCategoria).list();//mostrar lista
@@ -46,7 +46,7 @@ public class AgendaController {
 		return model;
 	}
 	//Eliminar categoria
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/categoria/delete", method = RequestMethod.GET)
 	public ModelAndView deleteUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
 		userService.delete(int Id);
