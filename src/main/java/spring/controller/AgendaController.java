@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import spring.model.Categoria;
 import spring.model.Departamento;
+import spring.model.Departamentos;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 
@@ -98,7 +99,7 @@ public class AgendaController {
 	}
 	
 	@RequestMapping(value = {"/departamento/add","/departamento/edit"} ,method = RequestMethod.POST)
-	public String saveDepartamento(@Valid Departamento departamento, BindingResult result) {
+	public String saveDepartamento(@Valid Departamentos departamento, BindingResult result) {
 		if (result.hasErrors()) {
 			return "FormDepartamento";
 		}
@@ -113,7 +114,7 @@ public class AgendaController {
 	}
 	//metodo eliminar departamento
 	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.GET)
-	public String deleteDepartamento(@ModelAttribute Departamento d) {
+	public String deleteDepartamento(@ModelAttribute Departamentos d) {
 		int id = 0;
 		departamentoService.delete(id);
 		return "redirect:/";
