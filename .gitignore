@@ -25,3 +25,4 @@ target/classes/spring/controller/AgendaController.class
 *.class
 *.class
 *.class
+*.class
