@@ -77,4 +77,12 @@ public class Categoria implements Serializable {
 		this.empleadoses = empleadoses;
 	}
 
+	@Override
+	public String toString() {
+		return "Categoria [idcategorias=" + idcategorias + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ "]";
+	}
+	
+	
+
 }

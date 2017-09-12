@@ -29,13 +29,13 @@ public class AgendaController {
 	
 	@Autowired
 	private IDepartamentoService departamentoService;
-
+//Metodo get Departamento
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getDepartamentos() {
 		ModelAndView model = new ModelAndView("home");
 		Categoria c = new Categoria();
-		c.setNombre("Sdasdas");
-		c.setDescripcion("ooooooo");
+		c.setNombre("RRHH");
+		c.setDescripcion("Descripcion e informacion de empleados");
 		categoriaService.addCategoria(c);
 		return model;
 	}
@@ -50,10 +50,20 @@ public class AgendaController {
 	}
 	//Eliminar categoria
 	@RequestMapping(value = "/categoria/delete", method = RequestMethod.GET)
-	public ModelAndView deleteUser(HttpServletRequest request) {
+	public ModelAndView deleteCategoria(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		userService.delete(int Id);
-		return new ModelAndView("redirect:/");	
+		return new ModelAndView("home:/");
+	}
+	
+	//Metodo delete Departamento
+@RequestMapping(value = "/Departamento/delete", method = RequestMethod.GET)
+public ModelAndView deleteDepartamento(HttpServletRequest request){
+	int userId = Integer.parseInt(request.getParameter("id"));
+	return new ModelAndView("home:/");
+	
+}
+	
+	
 	
 		
 		

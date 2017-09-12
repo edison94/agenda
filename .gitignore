@@ -1,7 +1,8 @@
 *.class
 /tarjet
-/target/
+/target/*
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 *.MF
 *.properties
 .classpath
+*.class
