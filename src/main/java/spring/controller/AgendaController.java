@@ -72,7 +72,7 @@ public class AgendaController {
 		return new ModelAndView("formCategorias","categoria",getCategoriaObjectNew());
 	}
 	
-	@RequestMapping(value = "/categorias/delete", method = RequestMethod.POST)		
+	@RequestMapping(value = "/categorias/delete", method = RequestMethod.GET)		
 	public ModelAndView deleteCategoria(@RequestParam int id) {
 		categoriaService.deleteCategoria(id);
 		return new ModelAndView("redirect:/");
@@ -101,7 +101,7 @@ public class AgendaController {
 		return "form2";
 	}
 	//metodo eliminar departamento
-	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.POST)
+	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.GET)
 	public String deleteDepartamento(@ModelAttribute Departamento d) {
 		int id = 0;
 		departamentoService.delete(id);
