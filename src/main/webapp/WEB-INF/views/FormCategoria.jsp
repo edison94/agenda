@@ -15,7 +15,7 @@
 		<h2>Formulario de Categorias</h2>
 		
 		<form:form method="post" modelAttribute="categoria"
-			action="addcategoria.htm">
+			action="add">
 			<table>
 				<tr>
 					<td><form:label path="nombre">Nombre categoria</form:label></td>
