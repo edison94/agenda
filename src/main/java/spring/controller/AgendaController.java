@@ -4,6 +4,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,7 +73,17 @@ public class AgendaController {
 		return new ModelAndView("formCategorias","categoria",getCategoriaObjectNew());
 	}
 	
+<<<<<<< HEAD
+	@RequestMapping(value = "/categorias/delete", method = RequestMethod.GET)		
+=======
+	@RequestMapping(value = "/categorias/edit", method = RequestMethod.GET)		
+	public String editCategoria(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("categoria",categoriaService.getCategoria(id));
+		return "FormCategoria";
+	}
+	
 	@RequestMapping(value = "/categorias/delete", method = RequestMethod.POST)		
+>>>>>>> 03f97051eb0d5e9f93a135b7738f48ce19bf935a
 	public ModelAndView deleteCategoria(@RequestParam int id) {
 		categoriaService.deleteCategoria(id);
 		return new ModelAndView("redirect:/");
@@ -89,19 +100,19 @@ public class AgendaController {
 	@RequestMapping(value = {"/departamento/add","/departamento/edit"} ,method = RequestMethod.POST)
 	public String saveDepartamento(@Valid Departamento departamento, BindingResult result) {
 		if (result.hasErrors()) {
-			return "formDepartamento";
+			return "FormDepartamento";
 		}
 		departamentoService.saveOrUpdate(departamento);
-		return "redirect: grupos";
+		return "redirect: departamentos";
 	}
 	
-	@RequestMapping(value = "/departamento/editDepartamento", method = RequestMethod.POST)		
-	public String editDepartamento(@ModelAttribute Departamento d) {
-		departamentoService.edit(d);
-		return "form2";
+	@RequestMapping(value = "/departamento/edit", method = RequestMethod.GET)		
+	public String editDepartamento(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("departamento",departamentoService.get(id));
+		return "FormDepartamento";
 	}
 	//metodo eliminar departamento
-	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.POST)
+	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.GET)
 	public String deleteDepartamento(@ModelAttribute Departamento d) {
 		int id = 0;
 		departamentoService.delete(id);
