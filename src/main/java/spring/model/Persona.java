@@ -30,7 +30,7 @@ public class Persona implements Serializable {
 	private String dni;
 	private Date fechaNacimiento;
 	private Empleado empleado;
-	private Set<Direccion> direcciones = new HashSet<Direccion>(0);
+	private Direccion direccion;
 	private Set<Telefono> telefonos = new HashSet<Telefono>(0);
 
 	public Persona() {
@@ -42,14 +42,14 @@ public class Persona implements Serializable {
 	}
 
 	public Persona(String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento,
-			Empleado empleado, Set<Direccion> direcciones, Set<Telefono> telefonos) {
+			Empleado empleado, Direccion direccion, Set<Telefono> telefonos) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.dni = dni;
 		this.fechaNacimiento = fechaNacimiento;
 		this.empleado = empleado;
-		this.direcciones = direcciones;
+		this.direccion = direccion;
 		this.telefonos = telefonos;
 	}
 
@@ -120,13 +120,13 @@ public class Persona implements Serializable {
 		this.empleado = empleado;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set<Direccion> getdirecciones() {
-		return this.direcciones;
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
+	public Direccion getdireccion() {
+		return this.direccion;
 	}
 
-	public void setdirecciones(Set<Direccion> direcciones) {
-		this.direcciones = direcciones;
+	public void setdireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")

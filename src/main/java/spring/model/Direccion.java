@@ -13,6 +13,7 @@ import java.io.Serializable;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -57,14 +58,14 @@ public class Direccion implements Serializable {
 		this.iddirecciones = iddirecciones;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
 	public Persona getPersonas() {
 		return this.personas;
 	}
 
-	public void setPersonas(Persona personas) {
-		this.personas = personas;
+	public void setPersonas(Persona persona) {
+		this.personas = persona;
 	}
 
 	@Column(name = "direccion", nullable = false, length = 45)
