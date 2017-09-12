@@ -21,7 +21,6 @@ import spring.model.Departamento;
 import spring.model.Persona;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
-import spring.service.IPersonaService;
 
 @Controller
 public class AgendaController {
