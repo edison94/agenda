@@ -101,6 +101,11 @@ public class AgendaController {
 		return "Departamentos";
 	}
 	
+	@RequestMapping(value = "/departamentos/add", method = RequestMethod.GET)		
+	public String formDepartamento() {
+		return "FormDepartamento";
+	}
+	
 	@RequestMapping(value = {"/departamentos/add","/departamentos/edit"} ,method = RequestMethod.POST)
 	public String saveDepartamento(@Valid Departamento departamento, BindingResult result) {
 		if (result.hasErrors()) {
