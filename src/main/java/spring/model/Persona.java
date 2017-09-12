@@ -116,7 +116,7 @@ public class Persona implements Serializable {
 		return this.empleado;
 	}
 
-	public void setempleados(Empleado empleado) {
+	public void setempleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
 
