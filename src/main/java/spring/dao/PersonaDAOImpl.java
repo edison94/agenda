@@ -50,12 +50,14 @@ public class PersonaDAOImpl implements IPersonaDAO {
 
 	@Transactional
 	public List<Persona> listarPersonas() {
+		System.out.println("entra a 001");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
 		Root<Persona> root = query.from(Persona.class);
 		query.select(root);
 		Query<Persona> q = session.createQuery(query);
+		System.out.println("entra a 002");
 		return q.getResultList();
 	}
 	
