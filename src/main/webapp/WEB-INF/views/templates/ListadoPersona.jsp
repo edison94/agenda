@@ -21,7 +21,10 @@
 				<thead class="table-info">
 					<tr>
 						<th>Nombre</th>
-						<th>Acciones</th>
+						<th>Apellido1</th>
+						<th>Apellido2</th>
+						<th>DNI</th>
+						<th>fechaNacimiento</th>
 					</tr>
 				</thead>
 				<tbody>
