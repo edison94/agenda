@@ -1,9 +1,7 @@
 package spring.config;
 
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-
 import spring.model.Categoria;
 import spring.model.Departamento;
 import spring.model.Direccion;
@@ -43,6 +40,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
+		viewResolver.setContentType("text/html; charset=UTF-8");
 		return viewResolver;
 	}
 	
@@ -56,7 +54,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     	
     	return dataSource;
     }
-    
     
     private Properties getHibernateProperties() {
     	Properties properties = new Properties();
