@@ -4,6 +4,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,15 +90,15 @@ public class AgendaController {
 	@RequestMapping(value = {"/departamento/add","/departamento/edit"} ,method = RequestMethod.POST)
 	public String saveDepartamento(@Valid Departamento departamento, BindingResult result) {
 		if (result.hasErrors()) {
-			return "formDepartamento";
+			return "FormDepartamento";
 		}
 		departamentoService.saveOrUpdate(departamento);
-		return "redirect: grupos";
+		return "redirect: departamentos";
 	}
 	
-	@RequestMapping(value = "/departamento/editDepartamento", method = RequestMethod.POST)		
-	public String editDepartamento(@ModelAttribute Departamento d) {
-		departamentoService.edit(d);
-		return "form2";
+	@RequestMapping(value = "/departamento/edit", method = RequestMethod.GET)		
+	public String editDepartamento(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("departamento",departamentoService.get(id));
+		return "FormDepartamento";
 	}
 }
