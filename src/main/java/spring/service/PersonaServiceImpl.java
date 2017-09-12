@@ -24,6 +24,12 @@ public class PersonaServiceImpl implements IPersonaService{
 	public void addPersona(Persona persona) {
 		dao.saveOrUpdate(persona);	
 	}
+	
+	
+
+	public void editPersona(Persona persona) {
+		dao.saveOrUpdate(persona);	
+	}
 
 	public List<Persona> listarPersonas() {
 		return dao.listarPersonas();

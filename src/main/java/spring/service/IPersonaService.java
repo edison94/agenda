@@ -12,6 +12,8 @@ public interface IPersonaService {
 	
 	public void addPersona(Persona persona);
 	
+	public void editPersona(Persona persona);
+	
 	public List<Persona> listarPersonas();
 
 }
