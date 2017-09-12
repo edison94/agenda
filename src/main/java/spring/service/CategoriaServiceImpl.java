@@ -32,4 +32,10 @@ public class CategoriaServiceImpl implements ICategoriaService{
 		dao.delete(id);
 	}
 
+	public void saveOrUpdate(Categoria categoria) {
+		dao.saveOrUpdate(categoria);		
+	}
+	
+	
+
 }

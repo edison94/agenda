@@ -14,4 +14,6 @@ public interface ICategoriaService {
 	public void editCategoria(Categoria categoria);
 	
 	public void deleteCategoria(int id);
+	
+	public void saveOrUpdate(Categoria categoria);
 }

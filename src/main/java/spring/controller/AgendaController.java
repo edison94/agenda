@@ -69,6 +69,15 @@ public class AgendaController {
 		return model;
 	}
 	
+	@RequestMapping(value = {"/categorias/add","/categorias/edit"} ,method = RequestMethod.POST)
+	public String saveCategoria(@Valid Categoria categoria, BindingResult result) {
+		if (result.hasErrors()) {
+			return "FormCategoria";
+		}
+		categoriaService.saveOrUpdate(categoria);
+		return "home";
+	}
+	
 	@RequestMapping(value = "/categorias/add", method = RequestMethod.GET)		
 	public ModelAndView formCategoria() {
 		return new ModelAndView("FormCategoria","categoria",getCategoriaObjectNew());
