@@ -8,8 +8,8 @@
 	<title>Listado de categorias</title>
 </head>
 <body>
-	<div class="container">
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
+	<div class="container">
 		<h2>Listado de categorias</h2>
 		<c:choose>
 			<c:when test="${empty categorias}">
