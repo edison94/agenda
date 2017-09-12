@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:choose>
-	<c:when test="${empty categorias}">
+	<c:when test="${empty Empleado}">
 		<section class="jumbotron text-center">
 			<div class="container">
-				<h1 class="jumbotron-heading">No hay categorias</h1>
+				<h1 class="jumbotron-heading">No hay empleados</h1>
 				<p>
-					<a href="categorias/add" class="btn btn-success">Añadir categoria</a>
+					<a href="empleado/add" class="btn btn-success">Añadir empleado</a>
 				</p>
 			</div>
 		</section>
@@ -15,25 +15,24 @@
 	<c:otherwise>
 		<div class="row">
 			<p>
-				<a href="categorias/add" class="btn btn-success">Añadir categoria</a>
+				<a href="empleado/add" class="btn btn-success">Añadir empleado</a>
 			</p>
 			<table class="table table-hover">
 				<thead class="table-info">
 					<tr>
-						<th>Nombre</th>
-						<th>Descripción</th>
-						<th>Acciones</th>
+						<th>CodigoEmpleado</th>
+						<th>Salario</th>
+						<th>FechaAlta</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${categorias}" var="categoria">
+					<c:forEach items="${Empleados}" var="empleado">
 						<tr>
-							<th>${categoria.nombre}</th>
-							<th>${categoria.descripcion}</th>
+							<th>${empleado.nombre}</th>
 							<td>
-								<a href="categorias/edit?id=${categoria.idcategorias}"
+								<a href="empleado/edit?id=${empleado.idempleados}"
 								class="btn btn-warning">Editar</a>
-								<a href="categorias/delete?id=${categoria.idcategorias}" 
+								<a href="empleado/delete?id=${empleado.idempleados}" 
 								class="btn btn-danger">Eliminar</a>
 							</td>
 						</tr>

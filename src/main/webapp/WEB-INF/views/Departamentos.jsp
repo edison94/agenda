@@ -1,31 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	crossorigin="anonymous">
+	<jsp:include page="templates/head.jsp"></jsp:include>
+	<title>Listado de departamentos</title>
 </head>
 <body>
 	<div class="container">
-		${ error }ff
-		<jsp:include page="templates/listaDepartamentos.jsp"></jsp:include>
+		<jsp:include page="templates/navbar.jsp"></jsp:include>
+		<h2>Listado de departamentos</h2>
+
+		<c:choose>
+			<c:when test="${empty departamentos}">
+				<section class="jumbotron text-center">
+					<div class="container">
+						<h1 class="jumbotron-heading">No hay departamentos</h1>
+						<p>
+							<a href="departamentos/add" class="btn btn-success">Añadir
+								departamento</a>
+						</p>
+					</div>
+				</section>
+			</c:when>
+			<c:otherwise>
+				<div class="row">
+					<p>
+						<a href="departamentos/add" class="btn btn-success">Añadir
+							departamento</a>
+					</p>
+					<table class="table table-hover">
+						<thead class="table-info">
+							<tr>
+								<th>Nombre</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${departamentos}" var="departamento">
+								<tr>
+									<th>${departamento.nombre}</th>
+									<td><a
+										href="departamentos/edit?id=${departamento.iddepartamento}"
+										class="btn btn-warning">Editar</a> <a
+										href="departamentos/delete?id=${departamento.iddepartamento}"
+										class="btn btn-danger">Eliminar</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-		crossorigin="anonymous"></script>
 </body>
 </html>
