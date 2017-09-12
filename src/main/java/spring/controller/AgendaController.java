@@ -82,13 +82,13 @@ public class AgendaController {
 	
 	@RequestMapping(value = "/categorias", method = RequestMethod.GET)	
 	public String getListadoCategorias() {
-		return "Categorias";
+		return "categorias";
 	}
 	
 	@RequestMapping(value = {"/categorias/add","/categorias/edit"} ,method = RequestMethod.POST)
 	public String saveCategoria(@Valid Categoria categoria, BindingResult result) {
 		if (result.hasErrors()) {
-			return "FormCategoria";
+			return "formCategoria";
 		}
 		categoriaService.saveOrUpdate(categoria);
 		return "redirect: /agenda/categorias";
@@ -96,13 +96,13 @@ public class AgendaController {
 	
 	@RequestMapping(value = "/categorias/add", method = RequestMethod.GET)		
 	public String formCategoria() {
-		return "FormCategoria";
+		return "formCategoria";
 	}
 	
 	@RequestMapping(value = "/categorias/edit", method = RequestMethod.GET)		
 	public String editCategoria(@RequestParam("id")int id, ModelMap map) {		
 		map.addAttribute("categoria",categoriaService.getCategoria(id));
-		return "FormCategoria";
+		return "formCategoria";
 	}
 	
 	@RequestMapping(value = "/categorias/delete", method = RequestMethod.GET)		
@@ -117,8 +117,7 @@ public class AgendaController {
 	
 	/*@RequestMapping(value = "/personas", method = RequestMethod.GET)	
 	public String getListadoPersonas() {
-		System.out.println("pasa por listado de personas");
-		return "Personas";
+		return "personas";
 	}
 	
 	
@@ -126,7 +125,7 @@ public class AgendaController {
 	@RequestMapping(value = {"/personas/add","/personas/edit"} ,method = RequestMethod.POST)
 	public String savePersona(@Valid Persona persona, BindingResult result) {
 		if (result.hasErrors()) {
-			return "FormPersona";
+			return "formPersona";
 		}
 		personaService.saveOrUpdate(persona);
 		return "redirect: /agenda/personas";
@@ -135,13 +134,13 @@ public class AgendaController {
 	
 	@RequestMapping(value = "/personas/add", method = RequestMethod.GET)		
 	public String formPersonas() {
-		return "FormPersona";
+		return "formPersona";
 	}
 	
 	@RequestMapping(value = "/personas/edit", method = RequestMethod.GET)		
 	public String editPersona(@RequestParam("id")int id, ModelMap map) {		
 		map.addAttribute("persona",personaService.getPersona(id));
-		return "FormPersona";
+		return "formPersona";
 	}
 	
 	
@@ -156,18 +155,18 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/departamentos", method = RequestMethod.GET)	
 	public String getListadoDepartamentos() {
-		return "Departamentos";
+		return "departamentos";
 	}
 	
 	@RequestMapping(value = "/departamentos/add", method = RequestMethod.GET)		
 	public String formDepartamento() {
-		return "FormDepartamento";
+		return "formDepartamento";
 	}
 	
 	@RequestMapping(value = {"/departamentos/add","/departamentos/edit"} ,method = RequestMethod.POST)
 	public String saveDepartamento(@Valid Departamento departamento, BindingResult result) {
 		if (result.hasErrors()) {
-			return "FormDepartamento";
+			return "formDepartamento";
 		}
 		departamentoService.saveOrUpdate(departamento);
 		return "redirect: /agenda/departamentos";
@@ -176,7 +175,7 @@ public class AgendaController {
 	@RequestMapping(value = "/departamentos/edit", method = RequestMethod.GET)		
 	public String editDepartamento(@RequestParam("id")int id, ModelMap map) {		
 		map.addAttribute("departamento",departamentoService.get(id));
-		return "FormDepartamento";
+		return "formDepartamento";
 	}
 	
 	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.GET)
