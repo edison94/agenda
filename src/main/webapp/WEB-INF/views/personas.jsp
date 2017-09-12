@@ -5,20 +5,19 @@
 <html lang="es">
 <head>
 	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de categorias</title>
+	<title>Listado de personas</title>
 </head>
 <body>
-	<div class="container">
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
-		<h2>Listado de categorias</h2>
+	<div class="container">
+		<h2>Listado de personas</h2>
 		<c:choose>
-			<c:when test="${empty categorias}">
+			<c:when test="${empty personas}">
 				<section class="jumbotron text-center">
 					<div class="container">
-						<h1 class="jumbotron-heading">No hay categorias</h1>
+						<h1 class="jumbotron-heading">No hay personas</h1>
 						<p>
-							<a href="categorias/add" class="btn btn-success">Añadir
-								categoria</a>
+							<a href="persona/add" class="btn btn-success">Añadir persona</a>
 						</p>
 					</div>
 				</section>
@@ -26,25 +25,28 @@
 			<c:otherwise>
 				<div class="row">
 					<p>
-						<a href="categorias/add" class="btn btn-success">Añadir
-							categoria</a>
+						<a href="persona/add" class="btn btn-success">Añadir persona</a>
 					</p>
 					<table class="table table-hover">
 						<thead class="table-info">
 							<tr>
 								<th>Nombre</th>
-								<th>Descripción</th>
-								<th>Acciones</th>
+								<th>Apellidos</th>
+								<th>DNI</th>
+								<th>Fecha de nacimiento</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${categorias}" var="categoria">
+							<c:forEach items="${personas}" var="persona">
 								<tr>
-									<th>${categoria.nombre}</th>
-									<th>${categoria.descripcion}</th>
-									<td><a href="categorias/edit?id=${categoria.idcategorias}"
+									<td>${persona.nombre}</td>
+									<td>${persona.apellido1} ${persona.apellido2}</td>
+									<td>${persona.dni}</td>
+									<td>${persona.fechaNacimiento}</td>
+									<td><a href="persona/edit?id=${persona.idpersonas}"
 										class="btn btn-warning">Editar</a> <a
-										href="categorias/delete?id=${categoria.idcategorias}"
+										href="persona/delete?id=${persona.idpersonas}"
 										class="btn btn-danger">Eliminar</a></td>
 								</tr>
 							</c:forEach>
