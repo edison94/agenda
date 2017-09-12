@@ -73,6 +73,12 @@ public class AgendaController {
 		return new ModelAndView("formCategorias","categoria",getCategoriaObjectNew());
 	}
 	
+	@RequestMapping(value = "/categorias/edit", method = RequestMethod.GET)		
+	public String editCategoria(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("categoria",categoriaService.getCategoria(id));
+		return "FormCategoria";
+	}
+	
 	@RequestMapping(value = "/categorias/delete", method = RequestMethod.POST)		
 	public ModelAndView deleteCategoria(@RequestParam int id) {
 		categoriaService.deleteCategoria(id);
