@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.model.Categoria;
+import spring.model.Departamento;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 
@@ -43,6 +44,12 @@ public class AgendaController {
 	
 	@RequestMapping(value = "/categoria/addCategoria", method = RequestMethod.POST)		
 	public String altaCategoria() {
+		return "form2";
+	}
+	
+	@RequestMapping(value = "/departamento/editDepartamento", method = RequestMethod.POST)		
+	public String editDepartamento(@ModelAttribute Departamento d) {
+		departamentoService.edit(d);
 		return "form2";
 	}
 }
