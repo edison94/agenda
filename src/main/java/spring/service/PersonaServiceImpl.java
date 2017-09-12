@@ -1,5 +1,7 @@
 package spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import spring.dao.IPersonaDAO;
@@ -21,6 +23,10 @@ public class PersonaServiceImpl implements IPersonaService{
 
 	public void addPersona(Persona persona) {
 		dao.saveOrUpdate(persona);	
+	}
+
+	public List<Persona> listarPersonas() {
+		return dao.listarPersonas();
 	}
 	
 	
