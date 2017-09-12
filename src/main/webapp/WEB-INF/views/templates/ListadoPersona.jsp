@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:choose>
-	<c:when test="${empty Persona}">
+	<c:when test="${empty personas}">
 		<section class="jumbotron text-center">
 			<div class="container">
 				<h1 class="jumbotron-heading">No hay personas</h1>
@@ -28,7 +28,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${Persona}" var="persona">
+					<c:forEach items="${personas}" var="persona">
 						<tr>
 							<th>${persona.nombre}</th>
 							<td>
