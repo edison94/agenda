@@ -1,37 +1,31 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Listado de Categorias</title>
-        <meta charset="UTF-8">
-        <link href="css/estilos.css" rel="stylesheet" type="text/css" />        
-    </head>
-
-    <body>
-        <div id="contenedor">
-            <h2>Listado de Categorias</h2>
-
-            <form:form method="POST" commandName="command">
-                <form:errors path="*" cssClass="destacado" element="div"/>
-                <table>
-                    <tr>
-                        <td>Nombre : </td>
-                        <td>Descripcion : </td>
-                        <td><form:input path="mail" /></td>
-                        <td><form:errors path="mail" cssClass="destacado" /></td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <td colspan="3">
-                            <input type="submit" value="<< Ir al paso 2" name="_target1" />
-                            <input type="submit" value="Finalizar" name="_finish" />
-                            <input type="submit" value="Cancel" name="_cancel" />
-                        </td>
-                    </tr>
-                </table>
-            </form:form>
-        </div>
-
-    </body>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<jsp:include page="templates/listaCategorias.jsp"></jsp:include>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+		crossorigin="anonymous"></script>
+</body>
 </html>

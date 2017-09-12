@@ -62,21 +62,19 @@ public class AgendaController {
 	 **************************************************/
 	
 	@RequestMapping(value = "/categorias", method = RequestMethod.GET)	
-	public ModelAndView getListadoCategorias() {
-		ModelAndView model = new ModelAndView("listadoCategorias");
-		model.addObject("categorias",categoriaService.listarCategorias());
-		return model;
+	public String getListadoCategorias() {
+		return "Categorias";
 	}
 	
 	@RequestMapping(value = "/categorias/add", method = RequestMethod.GET)		
-	public ModelAndView formCategoria() {
-		return new ModelAndView("formCategorias","categoria",getCategoriaObjectNew());
+	public String formCategoria() {
+		return "FormCategoria";
 	}
 	
-	@RequestMapping(value = "/categorias/delete", method = RequestMethod.POST)		
-	public ModelAndView deleteCategoria(@RequestParam int id) {
+	@RequestMapping(value = "/categorias/delete", method = RequestMethod.GET)		
+	public String deleteCategoria(@RequestParam int id) {
 		categoriaService.deleteCategoria(id);
-		return new ModelAndView("redirect:/");
+		return "redirect: /agenda/categorias";
 	}
 	
 	/**************************************************
@@ -87,27 +85,25 @@ public class AgendaController {
 		return "Departamentos";
 	}
 	
-	@RequestMapping(value = {"/departamento/add","/departamento/edit"} ,method = RequestMethod.POST)
+	@RequestMapping(value = {"/departamentos/add","/departamentos/edit"} ,method = RequestMethod.POST)
 	public String saveDepartamento(@Valid Departamento departamento, BindingResult result) {
 		if (result.hasErrors()) {
 			return "FormDepartamento";
 		}
 		departamentoService.saveOrUpdate(departamento);
-		return "redirect: departamentos";
+		return "redirect: /agenda/departamentos";
 	}
 	
-	@RequestMapping(value = "/departamento/edit", method = RequestMethod.GET)		
+	@RequestMapping(value = "/departamentos/edit", method = RequestMethod.GET)		
 	public String editDepartamento(@RequestParam("id")int id, ModelMap map) {		
 		map.addAttribute("departamento",departamentoService.get(id));
 		return "FormDepartamento";
 	}
-	//metodo eliminar departamento
-	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.POST)
 	public String deleteDepartamento(@ModelAttribute Departamento d) {
 		int id = 0;
 		departamentoService.delete(id);
-		return "redirect:/";
+		return "redirect: /agenda/departamentos";
 	}
-	
-	
 }

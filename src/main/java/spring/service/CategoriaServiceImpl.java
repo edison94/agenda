@@ -11,7 +11,7 @@ public class CategoriaServiceImpl implements ICategoriaService{
 	
 	@Autowired
 	private ICategoriaDao dao;
-	
+
 	public List<Categoria> listarCategorias() {
 		return dao.list();
 	}

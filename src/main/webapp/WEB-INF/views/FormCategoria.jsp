@@ -1,37 +1,31 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<spring:url value="/resources/css/estilos.css" var="estilos" />
-<link href="${estilos}" rel="stylesheet" />
-<title>SpringAgenda  - FormCategoria</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	crossorigin="anonymous">
 </head>
 <body>
-
-	<div id="contenedor">
-		<h2>Formulario de Categorias</h2>
-		
-		<form:form method="post" modelAttribute="categoria"
-			action="addcategoria.htm">
-			<table>
-				<tr>
-					<td><form:label path="nombre">Nombre categoria</form:label></td>
-					<td><form:input path="nombre" /></td>
-				</tr>
-				<tr>
-					<td><form:label path="descripcion">Descripcion categoria</form:label></td>
-					<td><form:input path="descripcion" /></td>
-				</tr>
-				
-			</table>
-			<br />
-			<p>
-				<input type="submit" value="Dime la categoria" />
-			</p>
-		</form:form>
+	<div class="container">
+		<jsp:include page="templates/formularioCategorias.jsp"></jsp:include>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+		crossorigin="anonymous"></script>
 </body>
 </html>
