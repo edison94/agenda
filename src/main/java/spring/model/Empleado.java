@@ -1,11 +1,9 @@
 package spring.model;
 // default package
-// Generated 08-sep-2017 9:59:39 by Hibernate Tools 5.2.3.Final
+// Generated 12-sep-2017 9:12:47 by Hibernate Tools 5.2.3.Final
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,40 +12,41 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "empleados", catalog = "agenda")
+@Table(name = "empleados", catalog = "agenda", uniqueConstraints = @UniqueConstraint(columnNames = "idPersona"))
 public class Empleado implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1715043125510012159L;
 	private Integer idempleados;
 	private Categoria categorias;
 	private Departamento departamentos;
+	private Persona personas;
 	private String codEmpleado;
 	private String salario;
 	private Date fechaAlta;
-	private Set<Persona> personases = new HashSet<Persona>(0);
 
 	public Empleado() {
 	}
 
-	public Empleado(String codEmpleado) {
+	public Empleado(Persona personas, String codEmpleado) {
+		this.personas = personas;
 		this.codEmpleado = codEmpleado;
 	}
 
-	public Empleado(Categoria categorias, Departamento departamentos, String codEmpleado, String salario,
-			Date fechaAlta, Set<Persona> personases) {
+	public Empleado(Categoria categorias, Departamento departamentos, Persona personas, String codEmpleado,
+			String salario, Date fechaAlta) {
 		this.categorias = categorias;
 		this.departamentos = departamentos;
+		this.personas = personas;
 		this.codEmpleado = codEmpleado;
 		this.salario = salario;
 		this.fechaAlta = fechaAlta;
-		this.personases = personases;
 	}
 
 	@Id
@@ -82,6 +81,16 @@ public class Empleado implements Serializable {
 		this.departamentos = departamentos;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idPersona", unique = true, nullable = false)
+	public Persona getPersonas() {
+		return this.personas;
+	}
+
+	public void setPersonas(Persona personas) {
+		this.personas = personas;
+	}
+
 	@Column(name = "codEmpleado", nullable = false, length = 45)
 	public String getCodEmpleado() {
 		return this.codEmpleado;
@@ -108,15 +117,6 @@ public class Empleado implements Serializable {
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empleados")
-	public Set<Persona> getPersonases() {
-		return this.personases;
-	}
-
-	public void setPersonases(Set<Persona> personases) {
-		this.personases = personases;
 	}
 
 }

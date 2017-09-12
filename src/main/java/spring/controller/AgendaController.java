@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import spring.model.Categoria;
 import spring.model.Departamento;
+
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 
@@ -66,8 +67,23 @@ public class AgendaController {
 		return "Categorias";
 	}
 	
+	@RequestMapping(value = {"/categorias/add","/categorias/edit"} ,method = RequestMethod.POST)
+	public String saveCategoria(@Valid Categoria categoria, BindingResult result) {
+		if (result.hasErrors()) {
+			return "FormCategoria";
+		}
+		categoriaService.saveOrUpdate(categoria);
+		return "home";
+	}
+	
 	@RequestMapping(value = "/categorias/add", method = RequestMethod.GET)		
 	public String formCategoria() {
+		return "FormCategoria";
+	}
+	
+	@RequestMapping(value = "/categorias/edit", method = RequestMethod.GET)		
+	public String editCategoria(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("categoria",categoriaService.getCategoria(id));
 		return "FormCategoria";
 	}
 	

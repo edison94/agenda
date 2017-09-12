@@ -1,6 +1,6 @@
 package spring.model;
 // default package
-// Generated 08-sep-2017 9:59:39 by Hibernate Tools 5.2.3.Final
+// Generated 12-sep-2017 9:12:47 by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,14 +13,14 @@ import java.io.Serializable;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "direcciones", catalog = "agenda")
 public class Direccion implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 7944342381894124581L;
 	private Integer iddirecciones;
 	private Persona personas;
 	private String direccion;
@@ -58,14 +58,14 @@ public class Direccion implements Serializable {
 		this.iddirecciones = iddirecciones;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
 	public Persona getPersonas() {
 		return this.personas;
 	}
 
-	public void setPersonas(Persona personas) {
-		this.personas = personas;
+	public void setPersonas(Persona persona) {
+		this.personas = persona;
 	}
 
 	@Column(name = "direccion", nullable = false, length = 45)

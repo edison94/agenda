@@ -1,8 +1,7 @@
 package spring.model;
 // default package
-// Generated 08-sep-2017 9:59:39 by Hibernate Tools 5.2.3.Final
+// Generated 12-sep-2017 9:12:47 by Hibernate Tools 5.2.3.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -16,10 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "departamentos", catalog = "agenda")
-public class Departamento implements Serializable {
+public class Departamento implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 5221109109548791875L;
 	private Integer iddepartamento;
 	private String nombre;
 	private Set<Empleado> empleadoses = new HashSet<Empleado>(0);
