@@ -55,4 +55,13 @@ public class AgendaController {
 		departamentoService.edit(d);
 		return "form2";
 	}
+	//metodo eliminar departamento
+	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.POST)
+	public String deleteDepartamento(@ModelAttribute Departamento d) {
+		int id = 0;
+		departamentoService.delete(id);
+		return "form2";
+	}
+	
+	
 }
