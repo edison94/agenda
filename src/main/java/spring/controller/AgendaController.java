@@ -26,8 +26,8 @@ public class AgendaController {
 	@Autowired
 	private IDepartamentoService departamentoService;
 	
-	@Autowired
-	private IPersonaService personaService;
+	/*@Autowired
+	private IPersonaService personaService;*/
 	
 	
 	/**************************************************
@@ -99,7 +99,7 @@ public class AgendaController {
 	/**************************************************
 	 * Persona
 	 **************************************************/
-	
+	/*
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)	
 	public String getListadoPersonas() {
 		return "Personas";
@@ -134,7 +134,7 @@ public class AgendaController {
 		personaService.deletePersona(id);
 		return "redirect: /agenda/personas";
 	}
-	
+	*/
 	/**************************************************
 	 * Departamento
 	 **************************************************/
