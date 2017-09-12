@@ -71,7 +71,7 @@ public class AgendaController {
 	
 	@RequestMapping(value = "/categorias/add", method = RequestMethod.GET)		
 	public ModelAndView formCategoria() {
-		return new ModelAndView("formCategorias","categoria",getCategoriaObjectNew());
+		return new ModelAndView("FormCategoria","categoria",getCategoriaObjectNew());
 	}
 	
 	@RequestMapping(value = "/categorias/edit", method = RequestMethod.GET)		
