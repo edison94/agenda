@@ -14,4 +14,14 @@ public class PersonaServiceImpl implements IPersonaService{
 		return dao.getPersona(id);
 	}
 
+	public void saveOrUpdate(Persona persona) {
+		dao.saveOrUpdate(persona);
+		
+	}
+
+	public void addPersona(Persona persona) {
+		dao.saveOrUpdate(persona);	
+	}
+	
+	
 }

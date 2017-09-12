@@ -3,6 +3,7 @@ package spring.dao;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,7 +27,10 @@ public class PersonaDAOImpl implements IPersonaDAO {
 		query.select(root).where(builder.equal(root.get("idpersonas"), id));
 		Query<Persona> q = session.createQuery(query);
 		return q.getSingleResult();
-		
 	}
 
+	@Transactional
+	public void saveOrUpdate(Persona persona) {
+		sessionFactory.getCurrentSession().saveOrUpdate(persona);
+	}
 }
