@@ -10,7 +10,7 @@ public class PersonaServiceImpl implements IPersonaService{
 	@Autowired
 	private IPersonaDAO dao;
 
-	public Persona get(int id) {
+	public Persona getPersona(int id) {
 		return dao.getPersona(id);
 	}
 
