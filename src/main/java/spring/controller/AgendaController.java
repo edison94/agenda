@@ -48,6 +48,11 @@ public class AgendaController {
 		return new Departamento();
 	}
 	
+	@ModelAttribute("persona")
+	public Persona getPersonaObjectNew() {
+		return new Persona();
+	}
+	
 	@ModelAttribute("categorias")
 	public List<Categoria> getCategorias() {
 		return categoriaService.listarCategorias();
@@ -57,6 +62,11 @@ public class AgendaController {
 	public List<Departamento> getDepartamentos() {
 		return departamentoService.listarDepartamentos();
 	}
+	/*
+	@ModelAttribute("personas")
+	public List<Persona> getPersonas(){
+		return personaService.listarPersonas();
+	}*/
 	
 	/**************************************************
 	 * HOME
@@ -107,7 +117,7 @@ public class AgendaController {
 	
 	/*@RequestMapping(value = "/personas", method = RequestMethod.GET)	
 	public String getListadoPersonas() {
-		return "rersonas";
+		return "personas";
 	}
 	
 	
