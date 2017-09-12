@@ -14,8 +14,7 @@
 		<jsp:include page="templates/navbar.jsp"></jsp:include>
 		<h2>Formulario de departamento</h2>
 
-		<form:form method="post" modelAttribute="departamento"
-			accept-charset="UTF-8">
+		<form:form method="post" modelAttribute="departamento">
 			<form:hidden path="iddepartamento" />
 			<div class="form-group">
 				<form:label path="nombre">Nombre</form:label>
