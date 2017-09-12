@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import spring.model.Categoria;
 import spring.model.Departamento;
-
+import spring.model.Persona;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
+import spring.service.IPersonaService;
 
 @Controller
 public class AgendaController {
@@ -24,6 +25,9 @@ public class AgendaController {
 	
 	@Autowired
 	private IDepartamentoService departamentoService;
+	
+	@Autowired
+	private IPersonaService personaService;
 	
 	
 	/**************************************************
@@ -90,6 +94,45 @@ public class AgendaController {
 	public String deleteCategoria(@RequestParam int id) {
 		categoriaService.deleteCategoria(id);
 		return "redirect: /agenda/categorias";
+	}
+	
+	/**************************************************
+	 * Persona
+	 **************************************************/
+	
+	@RequestMapping(value = "/personas", method = RequestMethod.GET)	
+	public String getListadoPersonas() {
+		return "Personas";
+	}
+	
+	
+	
+	@RequestMapping(value = {"/personas/add","/personas/edit"} ,method = RequestMethod.POST)
+	public String savePersona(@Valid Persona persona, BindingResult result) {
+		if (result.hasErrors()) {
+			return "FormPersona";
+		}
+		personaService.saveOrUpdate(persona);
+		return "redirect: /agenda/personas";
+	}
+	
+	
+	@RequestMapping(value = "/personas/add", method = RequestMethod.GET)		
+	public String formPersonas() {
+		return "FormPersona";
+	}
+	
+	@RequestMapping(value = "/personas/edit", method = RequestMethod.GET)		
+	public String editPersona(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("persona",personaService.getPersona(id));
+		return "FormPersona";
+	}
+	
+	
+	@RequestMapping(value = "/personas/delete", method = RequestMethod.GET)		
+	public String deletePersona(@RequestParam int id) {
+		personaService.deletePersona(id);
+		return "redirect: /agenda/personas";
 	}
 	
 	/**************************************************
