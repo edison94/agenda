@@ -120,9 +120,8 @@ public class AgendaController {
 		return "FormDepartamento";
 	}
 	
-	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.POST)
-	public String deleteDepartamento(@ModelAttribute Departamento d) {
-		int id = 0;
+	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.GET)
+	public String deleteDepartamento(@RequestParam("id") int id) {
 		departamentoService.delete(id);
 		return "redirect: /agenda/departamentos";
 	}
