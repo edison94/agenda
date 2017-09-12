@@ -1,6 +1,6 @@
 package spring.model;
 // default package
-// Generated 08-sep-2017 9:59:39 by Hibernate Tools 5.2.3.Final
+// Generated 12-sep-2017 9:12:47 by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,18 +17,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "telefonos", catalog = "agenda")
-public class Telefono implements Serializable {
+public class Telefonos implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 3330286103626997666L;
 	private Integer idtelefonos;
-	private Persona personas;
+	private Personas personas;
 	private String telefono;
 
-	public Telefono() {
+	public Telefonos() {
 	}
 
-	public Telefono(Persona personas, String telefono) {
+	public Telefonos(Personas personas, String telefono) {
 		this.personas = personas;
 		this.telefono = telefono;
 	}
@@ -47,11 +46,11 @@ public class Telefono implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
-	public Persona getPersonas() {
+	public Personas getPersonas() {
 		return this.personas;
 	}
 
-	public void setPersonas(Persona personas) {
+	public void setPersonas(Personas personas) {
 		this.personas = personas;
 	}
 

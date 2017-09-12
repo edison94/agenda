@@ -1,8 +1,7 @@
 package spring.model;
 // default package
-// Generated 08-sep-2017 9:59:39 by Hibernate Tools 5.2.3.Final
+// Generated 12-sep-2017 9:12:47 by Hibernate Tools 5.2.3.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -16,22 +15,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "departamentos", catalog = "agenda")
-public class Departamento implements Serializable {
+public class Departamentos implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 5221109109548791875L;
 	private Integer iddepartamento;
 	private String nombre;
-	private Set<Empleado> empleadoses = new HashSet<Empleado>(0);
+	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
 
-	public Departamento() {
+	public Departamentos() {
 	}
 
-	public Departamento(String nombre) {
+	public Departamentos(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public Departamento(String nombre, Set<Empleado> empleadoses) {
+	public Departamentos(String nombre, Set<Empleados> empleadoses) {
 		this.nombre = nombre;
 		this.empleadoses = empleadoses;
 	}
@@ -58,11 +56,11 @@ public class Departamento implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departamentos")
-	public Set<Empleado> getEmpleadoses() {
+	public Set<Empleados> getEmpleadoses() {
 		return this.empleadoses;
 	}
 
-	public void setEmpleadoses(Set<Empleado> empleadoses) {
+	public void setEmpleadoses(Set<Empleados> empleadoses) {
 		this.empleadoses = empleadoses;
 	}
 
