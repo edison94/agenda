@@ -1,31 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	crossorigin="anonymous">
+	<jsp:include page="templates/head.jsp"></jsp:include>
+	<title>Listado de categorias</title>
 </head>
 <body>
 	<div class="container">
-		<jsp:include page="templates/listaCategorias.jsp"></jsp:include>
+	<jsp:include page="templates/navbar.jsp"></jsp:include>
+		<h2>Listado de categorias</h2>
+		<c:choose>
+			<c:when test="${empty categorias}">
+				<section class="jumbotron text-center">
+					<div class="container">
+						<h1 class="jumbotron-heading">No hay categorias</h1>
+						<p>
+							<a href="categorias/add" class="btn btn-success">Añadir
+								categoria</a>
+						</p>
+					</div>
+				</section>
+			</c:when>
+			<c:otherwise>
+				<div class="row">
+					<p>
+						<a href="categorias/add" class="btn btn-success">Añadir
+							categoria</a>
+					</p>
+					<table class="table table-hover">
+						<thead class="table-info">
+							<tr>
+								<th>Nombre</th>
+								<th>Descripción</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${categorias}" var="categoria">
+								<tr>
+									<th>${categoria.nombre}</th>
+									<th>${categoria.descripcion}</th>
+									<td><a href="categorias/edit?id=${categoria.idcategorias}"
+										class="btn btn-warning">Editar</a> <a
+										href="categorias/delete?id=${categoria.idcategorias}"
+										class="btn btn-danger">Eliminar</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-		crossorigin="anonymous"></script>
 </body>
 </html>
