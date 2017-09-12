@@ -24,11 +24,15 @@ public class PersonaServiceImpl implements IPersonaService{
 	public void addPersona(Persona persona) {
 		dao.saveOrUpdate(persona);	
 	}
-	
-	
+		
 
 	public void editPersona(Persona persona) {
 		dao.saveOrUpdate(persona);	
+	}
+	
+
+	public void deletePersona(int id) {
+		dao.delete(id);	
 	}
 
 	public List<Persona> listarPersonas() {

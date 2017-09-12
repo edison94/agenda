@@ -36,6 +36,15 @@ public class PersonaDAOImpl implements IPersonaDAO {
 	public void saveOrUpdate(Persona persona) {
 		sessionFactory.getCurrentSession().saveOrUpdate(persona);
 	}
+	
+
+	@Transactional
+	public void delete(int id) {
+		Persona personaToDelete = new Persona();
+		personaToDelete.setIdpersonas(id);
+		sessionFactory.getCurrentSession().delete(personaToDelete);
+		
+	}
 
 	@Transactional
 	public List<Persona> listarPersonas() {
