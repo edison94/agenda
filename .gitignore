@@ -6,6 +6,15 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 *.properties
 .classpath
 *.class
+<<<<<<< HEAD
+target/classes/spring/controller/AgendaController.class
+target/m2e-wtp/web-resources/META-INF/maven/com.grupo1/agenda/pom.properties
+target/classes/spring/controller/AgendaController.class
+target/m2e-wtp/web-resources/META-INF/maven/com.grupo1/agenda/pom.properties
+=======
 /target/
 target/classes/spring/controller/AgendaController.class
 *.class
+>>>>>>> 90db8c630e0a01bb8f7750d29bd34f8689e5d875
+target/classes/spring/controller/AgendaController.class
+target/m2e-wtp/web-resources/META-INF/maven/com.grupo1/agenda/pom.properties

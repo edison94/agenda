@@ -101,4 +101,13 @@ public class AgendaController {
 		map.addAttribute("departamento",departamentoService.get(id));
 		return "FormDepartamento";
 	}
+	//metodo eliminar departamento
+	@RequestMapping(value = "/departamento/deleteDepartamento", method = RequestMethod.POST)
+	public String deleteDepartamento(@ModelAttribute Departamento d) {
+		int id = 0;
+		departamentoService.delete(id);
+		return "redirect:/";
+	}
+	
+	
 }
