@@ -15,21 +15,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "departamentos", catalog = "agenda")
-public class Departamentos implements java.io.Serializable {
+public class Departamento implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5221109109548791875L;
 	private Integer iddepartamento;
 	private String nombre;
-	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
+	private Set<Empleado> empleadoses = new HashSet<Empleado>(0);
 
-	public Departamentos() {
+	public Departamento() {
 	}
 
-	public Departamentos(String nombre) {
+	public Departamento(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public Departamentos(String nombre, Set<Empleados> empleadoses) {
+	public Departamento(String nombre, Set<Empleado> empleadoses) {
 		this.nombre = nombre;
 		this.empleadoses = empleadoses;
 	}
@@ -56,11 +56,11 @@ public class Departamentos implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departamentos")
-	public Set<Empleados> getEmpleadoses() {
+	public Set<Empleado> getEmpleadoses() {
 		return this.empleadoses;
 	}
 
-	public void setEmpleadoses(Set<Empleados> empleadoses) {
+	public void setEmpleadoses(Set<Empleado> empleadoses) {
 		this.empleadoses = empleadoses;
 	}
 

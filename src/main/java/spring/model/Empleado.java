@@ -20,26 +20,26 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "empleados", catalog = "agenda", uniqueConstraints = @UniqueConstraint(columnNames = "idPersona"))
-public class Empleados implements Serializable {
+public class Empleado implements Serializable {
 
 	private static final long serialVersionUID = 1715043125510012159L;
 	private Integer idempleados;
-	private Categorias categorias;
-	private Departamentos departamentos;
-	private Personas personas;
+	private Categoria categorias;
+	private Departamento departamentos;
+	private Persona personas;
 	private String codEmpleado;
 	private String salario;
 	private Date fechaAlta;
 
-	public Empleados() {
+	public Empleado() {
 	}
 
-	public Empleados(Personas personas, String codEmpleado) {
+	public Empleado(Persona personas, String codEmpleado) {
 		this.personas = personas;
 		this.codEmpleado = codEmpleado;
 	}
 
-	public Empleados(Categorias categorias, Departamentos departamentos, Personas personas, String codEmpleado,
+	public Empleado(Categoria categorias, Departamento departamentos, Persona personas, String codEmpleado,
 			String salario, Date fechaAlta) {
 		this.categorias = categorias;
 		this.departamentos = departamentos;
@@ -63,31 +63,31 @@ public class Empleados implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idCategoria")
-	public Categorias getCategorias() {
+	public Categoria getCategorias() {
 		return this.categorias;
 	}
 
-	public void setCategorias(Categorias categorias) {
+	public void setCategorias(Categoria categorias) {
 		this.categorias = categorias;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idDepartamento")
-	public Departamentos getDepartamentos() {
+	public Departamento getDepartamentos() {
 		return this.departamentos;
 	}
 
-	public void setDepartamentos(Departamentos departamentos) {
+	public void setDepartamentos(Departamento departamentos) {
 		this.departamentos = departamentos;
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona", unique = true, nullable = false)
-	public Personas getPersonas() {
+	public Persona getPersonas() {
 		return this.personas;
 	}
 
-	public void setPersonas(Personas personas) {
+	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}
 

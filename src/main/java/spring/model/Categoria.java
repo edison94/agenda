@@ -16,22 +16,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias", catalog = "agenda")
-public class Categorias implements Serializable {
+public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1734672929158323637L;
 	private Integer idcategorias;
 	private String nombre;
 	private String descripcion;
-	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
+	private Set<Empleado> empleadoses = new HashSet<Empleado>(0);
 
-	public Categorias() {
+	public Categoria() {
 	}
 
-	public Categorias(String nombre) {
+	public Categoria(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public Categorias(String nombre, String descripcion, Set<Empleados> empleadoses) {
+	public Categoria(String nombre, String descripcion, Set<Empleado> empleadoses) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.empleadoses = empleadoses;
@@ -68,11 +68,11 @@ public class Categorias implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
-	public Set<Empleados> getEmpleadoses() {
+	public Set<Empleado> getEmpleadoses() {
 		return this.empleadoses;
 	}
 
-	public void setEmpleadoses(Set<Empleados> empleadoses) {
+	public void setEmpleadoses(Set<Empleado> empleadoses) {
 		this.empleadoses = empleadoses;
 	}
 

@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "personas", catalog = "agenda")
-public class Personas implements Serializable {
+public class Persona implements Serializable {
 
 	private static final long serialVersionUID = 2386478252995393754L;
 	private Integer idpersonas;
@@ -29,20 +29,20 @@ public class Personas implements Serializable {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
-	private Empleados empleado;
-	private Set<Direcciones> direcciones = new HashSet<Direcciones>(0);
-	private Set<Telefonos> telefonos = new HashSet<Telefonos>(0);
+	private Empleado empleado;
+	private Set<Direccion> direcciones = new HashSet<Direccion>(0);
+	private Set<Telefono> telefonos = new HashSet<Telefono>(0);
 
-	public Personas() {
+	public Persona() {
 	}
 
-	public Personas(String nombre, String apellido1) {
+	public Persona(String nombre, String apellido1) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 	}
 
-	public Personas(String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento,
-			Empleados empleado, Set<Direcciones> direcciones, Set<Telefonos> telefonos) {
+	public Persona(String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento,
+			Empleado empleado, Set<Direccion> direcciones, Set<Telefono> telefonos) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -112,29 +112,29 @@ public class Personas implements Serializable {
 	}
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Empleados getempleado() {
+	public Empleado getempleado() {
 		return this.empleado;
 	}
 
-	public void setempleados(Empleados empleado) {
+	public void setempleados(Empleado empleado) {
 		this.empleado = empleado;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set<Direcciones> getdirecciones() {
+	public Set<Direccion> getdirecciones() {
 		return this.direcciones;
 	}
 
-	public void setdirecciones(Set<Direcciones> direcciones) {
+	public void setdirecciones(Set<Direccion> direcciones) {
 		this.direcciones = direcciones;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set<Telefonos> gettelefonos() {
+	public Set<Telefono> gettelefonos() {
 		return this.telefonos;
 	}
 
-	public void settelefonos(Set<Telefonos> telefonos) {
+	public void settelefonos(Set<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 

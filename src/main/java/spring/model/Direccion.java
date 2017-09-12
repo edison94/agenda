@@ -17,27 +17,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "direcciones", catalog = "agenda")
-public class Direcciones implements Serializable {
+public class Direccion implements Serializable {
 
 	private static final long serialVersionUID = 7944342381894124581L;
 	private Integer iddirecciones;
-	private Personas personas;
+	private Persona personas;
 	private String direccion;
 	private String codPostal;
 	private String localidad;
 	private String provincia;
 
-	public Direcciones() {
+	public Direccion() {
 	}
 
-	public Direcciones(String direccion, String codPostal, String localidad, String provincia) {
+	public Direccion(String direccion, String codPostal, String localidad, String provincia) {
 		this.direccion = direccion;
 		this.codPostal = codPostal;
 		this.localidad = localidad;
 		this.provincia = provincia;
 	}
 
-	public Direcciones(Personas personas, String direccion, String codPostal, String localidad, String provincia) {
+	public Direccion(Persona personas, String direccion, String codPostal, String localidad, String provincia) {
 		this.personas = personas;
 		this.direccion = direccion;
 		this.codPostal = codPostal;
@@ -59,11 +59,11 @@ public class Direcciones implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
-	public Personas getPersonas() {
+	public Persona getPersonas() {
 		return this.personas;
 	}
 
-	public void setPersonas(Personas personas) {
+	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}
 

@@ -17,17 +17,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "telefonos", catalog = "agenda")
-public class Telefonos implements Serializable {
+public class Telefono implements Serializable {
 
 	private static final long serialVersionUID = 3330286103626997666L;
 	private Integer idtelefonos;
-	private Personas personas;
+	private Persona personas;
 	private String telefono;
 
-	public Telefonos() {
+	public Telefono() {
 	}
 
-	public Telefonos(Personas personas, String telefono) {
+	public Telefono(Persona personas, String telefono) {
 		this.personas = personas;
 		this.telefono = telefono;
 	}
@@ -46,11 +46,11 @@ public class Telefonos implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
-	public Personas getPersonas() {
+	public Persona getPersonas() {
 		return this.personas;
 	}
 
-	public void setPersonas(Personas personas) {
+	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}
 
