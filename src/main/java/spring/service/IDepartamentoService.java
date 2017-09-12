@@ -5,7 +5,7 @@ import java.util.List;
 import spring.model.Departamento;
 
 public interface IDepartamentoService {
-	public List<Departamento> listar();
+	public List<Departamento> listarDepartamentos();
 	
 	public Departamento get(int id);
 	
@@ -14,4 +14,6 @@ public interface IDepartamentoService {
 	public void edit(Departamento departamento);
 	
 	public void delete(int id);
+
+	public void saveOrUpdate(Departamento departamento);
 }
