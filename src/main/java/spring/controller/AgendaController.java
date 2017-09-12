@@ -73,7 +73,7 @@ public class AgendaController {
 			return "FormCategoria";
 		}
 		categoriaService.saveOrUpdate(categoria);
-		return "home";
+		return "redirect: /agenda/categorias";
 	}
 	
 	@RequestMapping(value = "/categorias/add", method = RequestMethod.GET)		
