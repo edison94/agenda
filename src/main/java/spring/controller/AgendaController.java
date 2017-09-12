@@ -1,9 +1,7 @@
 package spring.controller;
 
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,9 +17,9 @@ import spring.service.IDepartamentoService;
 
 @Controller
 public class AgendaController {
-	
 	@Autowired
 	private ICategoriaService categoriaService;
+	
 	@Autowired
 	private IDepartamentoService departamentoService;
 	
@@ -95,5 +93,11 @@ public class AgendaController {
 		}
 		departamentoService.saveOrUpdate(departamento);
 		return "redirect: grupos";
+	}
+	
+	@RequestMapping(value = "/departamento/editDepartamento", method = RequestMethod.POST)		
+	public String editDepartamento(@ModelAttribute Departamento d) {
+		departamentoService.edit(d);
+		return "form2";
 	}
 }
