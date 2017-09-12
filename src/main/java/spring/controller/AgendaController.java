@@ -31,7 +31,6 @@ public class AgendaController {
 	 **************************************************/
 	@ModelAttribute("categoria")
 	public Categoria getCategoriaObjectNew() {
-		System.out.println("-- Genero una categoria nueva.--");
 		return new Categoria();
 	}
 	

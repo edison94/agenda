@@ -1,31 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	crossorigin="anonymous">
+	<jsp:include page="templates/head.jsp"></jsp:include>
+	<title>Formulario de departamento</title>
 </head>
 <body>
 	<div class="container">
-		<jsp:include page="templates/formularioDepartamentos.jsp"></jsp:include>
+		<jsp:include page="templates/navbar.jsp"></jsp:include>
+		<h2>Formulario de departamento</h2>
+
+		<form:form method="post" modelAttribute="departamento"
+			accept-charset="UTF-8">
+			<form:hidden path="iddepartamento" />
+			<div class="form-group">
+				<form:label path="nombre">Nombre</form:label>
+				:
+				<form:input path="nombre" class="form-control"
+					placeholder="Nombre del departamento" />
+				<div class="has-error">
+					<form:errors path="nombre" class="form-control-feedback" />
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form:form>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-		crossorigin="anonymous"></script>
+
 </body>
 </html>
