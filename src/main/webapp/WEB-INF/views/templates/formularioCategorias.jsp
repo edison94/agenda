@@ -12,7 +12,7 @@
 		</div>
   	</div>
   	<div class="form-group">
-    	<form:label path="descripcion">Nombre categoria</form:label>
+    	<form:label path="descripcion">Descripción</form:label>
     	<form:input path="descripcion" class="form-control" />
     	<div class="has-error">
 			<form:errors path="descripcion" class="help-inline" />

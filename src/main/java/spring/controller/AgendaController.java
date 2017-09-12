@@ -3,14 +3,19 @@ package spring.controller;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
+
+import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
 
@@ -121,10 +126,19 @@ public class AgendaController {
 		return "FormDepartamento";
 	}
 	
-	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.POST)
-	public String deleteDepartamento(@ModelAttribute Departamento d) {
-		int id = 0;
-		departamentoService.delete(id);
+	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.GET)
+	public String deleteDepartamento(@RequestParam("id")int id) throws AgendaException {
+		try {
+			departamentoService.delete(id);
+		} catch (Exception e) {
+			throw new AgendaException("redirect: /agenda/departamentos","No se puede borrar");
+		}
 		return "redirect: /agenda/departamentos";
+	}
+	
+	@ResponseStatus(value=HttpStatus.CONFLICT,reason="Data integrity violation") 
+	@ExceptionHandler(AgendaException.class)
+	public void handleCustomException() {
+		//esto se haria mejor con ajax
 	}
 }

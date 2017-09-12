@@ -13,6 +13,7 @@
 </head>
 <body>
 	<div class="container">
+		${ error }ff
 		<jsp:include page="templates/listaDepartamentos.jsp"></jsp:include>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
