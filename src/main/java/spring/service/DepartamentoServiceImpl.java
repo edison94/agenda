@@ -12,7 +12,7 @@ public class DepartamentoServiceImpl implements IDepartamentoService{
 	@Autowired
 	private IDepartamentoDAO dao;
 	
-	public List<Departamento> listar() {
+	public List<Departamento> listarDepartamentos() {
 		return dao.list();
 	}
 
@@ -30,6 +30,10 @@ public class DepartamentoServiceImpl implements IDepartamentoService{
 
 	public void delete(int id) {
 		dao.delete(id);
+	}
+
+	public void saveOrUpdate(Departamento departamento) {
+		dao.saveOrUpdate(departamento);
 	}
 
 	
