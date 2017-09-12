@@ -134,7 +134,7 @@ public class AgendaController {
 		personaService.deletePersona(id);
 		return "redirect: /agenda/personas";
 	}*/
-	
+
 	/**************************************************
 	 * Departamento
 	 **************************************************/
