@@ -98,19 +98,6 @@ public class AgendaController {
 		return new ModelAndView("home");
 	}
 
-	@RequestMapping(value = "/opciones", method = RequestMethod.GET)
-	public @ResponseBody List<String> options(@RequestParam("sujeto") String sujeto) {
-		ArrayList<String> opciones = new ArrayList<String>();
-		if (sujeto.equals("empleado")) {
-			opciones.add("Categoría");
-			opciones.add("Departamento");
-		}
-		opciones.add("Dirección");
-		opciones.add("Nombre");
-		opciones.add("Teléfono");
-		return opciones;
-	}
-
 	/**************************************************
 	 * Categoria
 	 **************************************************/
