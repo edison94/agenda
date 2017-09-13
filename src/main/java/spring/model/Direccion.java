@@ -103,4 +103,23 @@ public class Direccion implements Serializable {
 		this.provincia = provincia;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Direccion [iddirecciones=");
+		builder.append(iddirecciones);
+		builder.append(", personas=");
+		builder.append(personas);
+		builder.append(", direccion=");
+		builder.append(direccion);
+		builder.append(", codPostal=");
+		builder.append(codPostal);
+		builder.append(", localidad=");
+		builder.append(localidad);
+		builder.append(", provincia=");
+		builder.append(provincia);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

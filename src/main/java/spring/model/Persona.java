@@ -138,4 +138,29 @@ public class Persona implements Serializable {
 		this.telefonos = telefonos;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Persona [idpersonas=");
+		builder.append(idpersonas);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", apellido1=");
+		builder.append(apellido1);
+		builder.append(", apellido2=");
+		builder.append(apellido2);
+		builder.append(", dni=");
+		builder.append(dni);
+		builder.append(", fechaNacimiento=");
+		builder.append(fechaNacimiento);
+		builder.append(", empleado=");
+		builder.append(empleado);
+		builder.append(", direccion=");
+		builder.append(direccion);
+		builder.append(", telefonos=");
+		builder.append(telefonos);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

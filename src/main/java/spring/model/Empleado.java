@@ -119,4 +119,25 @@ public class Empleado implements Serializable {
 		this.fechaAlta = fechaAlta;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Empleado [idempleados=");
+		builder.append(idempleados);
+		builder.append(", categorias=");
+		builder.append(categorias);
+		builder.append(", departamentos=");
+		builder.append(departamentos);
+		builder.append(", personas=");
+		builder.append(personas);
+		builder.append(", codEmpleado=");
+		builder.append(codEmpleado);
+		builder.append(", salario=");
+		builder.append(salario);
+		builder.append(", fechaAlta=");
+		builder.append(fechaAlta);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

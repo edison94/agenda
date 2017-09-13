@@ -76,4 +76,19 @@ public class Categoria implements Serializable {
 		this.empleadoses = empleadoses;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Categoria [idcategorias=");
+		builder.append(idcategorias);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", descripcion=");
+		builder.append(descripcion);
+		builder.append(", empleadoses=");
+		builder.append(empleadoses);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

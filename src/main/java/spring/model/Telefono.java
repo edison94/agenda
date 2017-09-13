@@ -63,4 +63,17 @@ public class Telefono implements Serializable {
 		this.telefono = telefono;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Telefono [idtelefonos=");
+		builder.append(idtelefonos);
+		builder.append(", personas=");
+		builder.append(personas);
+		builder.append(", telefono=");
+		builder.append(telefono);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }
