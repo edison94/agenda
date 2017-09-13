@@ -43,9 +43,9 @@
 						<tbody>
 							<c:forEach items="${empleados}" var="empleado">
 								<tr>
-									<td>${empleado.codigoEmpleado}</td>
-									<td>${empleado.persona.nombre}</td>
-									<td>${empleado.persona.apellido1} ${empleado.persona.apellido2}</td>
+									<td>${empleado.codEmpleado}</td>
+									<td>${empleado.personas.nombre}</td>
+									<td>${empleado.personas.apellido1} ${empleado.persona.apellido2}</td>
 									<td>${empleado.salario}</td>
 									<td>${empleado.fechaAlta}</td>
 									<td><a href="empleados/edit?id=${empleado.idempleados}"
