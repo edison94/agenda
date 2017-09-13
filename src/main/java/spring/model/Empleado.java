@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "empleados", catalog = "agenda", uniqueConstraints = @UniqueConstraint(columnNames = "idPersona"))
 public class Empleado implements Serializable {
