@@ -5,13 +5,59 @@
 <html lang="es">
 <head>
 	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de departamentos</title>
+	<title>Listado de empleados</title>
 </head>
 <body>
 	<div class="container">
 		<jsp:include page="templates/navbar.jsp"></jsp:include>
-		<h2>Listado de departamentos</h2>
-		
+		<h2>Listado de empleados</h2>
+
+		<c:choose>
+			<c:when test="${empty empleado}">
+				<section class="jumbotron text-center">
+					<div class="container">
+						<h1 class="jumbotron-heading">No hay empleados</h1>
+						<p>
+							<a href="empleado/add" class="btn btn-success">Añadir empleado</a>
+						</p>
+					</div>
+				</section>
+			</c:when>
+			<c:otherwise>
+				<div class="row">
+					<p>
+						<a href="empleado/add" class="btn btn-success">Añadir empleado</a>
+					</p>
+					<table class="table table-hover">
+						<thead class="table-info">
+							<tr>
+								<th>Código</th>
+								<th>Nombre</th>
+								<th>Apellidos</th>
+								<th>Salario</th>
+								<th>Fecha de alta</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${empleados}" var="empleado">
+								<tr>
+									<td>${empleado.codigoEmpleado}</td>
+									<td>${empleado.persona.nombre}</td>
+									<td>${empleado.persona.apellido1} ${empleado.persona.apellido2}</td>
+									<td>${empleado.salario}</td>
+									<td>${empleado.fechaAlta}</td>
+									<td><a href="empleado/edit?id=${empleado.idempleados}"
+										class="btn btn-warning">Editar</a> <a
+										href="empleado/delete?id=${empleado.idempleados}"
+										class="btn btn-danger">Eliminar</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>
