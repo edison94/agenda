@@ -6,7 +6,7 @@ import java.util.List;
 import spring.model.Empleado;
 
 public interface IEmpleadoDAO {
-	public Empleado getIdempleados(int id);
+	public Empleado getEmpleado(int id);
 	
 	public void saveOrUpdate(Empleado empleado);
 	

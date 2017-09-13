@@ -19,7 +19,7 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	
 
 	public Empleado get(int id) {
-		return dao.getIdempleados(id);
+		return dao.getEmpleado(id);
 	}
 
 	public void add(Empleado empleado) {
