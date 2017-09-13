@@ -44,7 +44,7 @@ public class Telefono implements Serializable {
 		this.idtelefonos = idtelefonos;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersona")
 	public Persona getPersonas() {
 		return this.personas;

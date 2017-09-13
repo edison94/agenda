@@ -22,10 +22,11 @@ import spring.model.Categoria;
 import spring.model.Departamento;
 import spring.model.Empleado;
 import spring.model.Persona;
-import spring.service.EmpleadoServiceImpl;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 import spring.service.IEmpleadoService;
+import spring.service.IPersonaService;
+import spring.service.ISearchService;
 
 @Controller
 public class AgendaController {
@@ -36,10 +37,13 @@ public class AgendaController {
 	private IDepartamentoService departamentoService;
 	
 	@Autowired
+	private IPersonaService personaService;
+	
+	@Autowired
 	private IEmpleadoService empleadoService;
 	
-	/*@Autowired
-	private IPersonaService personaService;*/
+	@Autowired
+	private ISearchService searchService;
 	
 	
 	/**************************************************
@@ -75,21 +79,23 @@ public class AgendaController {
 		return departamentoService.listarDepartamentos();
 	}
 	
-	@ModelAttribute("empleados")
-	public List<Empleado> getEmpleados() {
-		return empleadoService.listarEmpleados();
-	}
-	/*
 	@ModelAttribute("personas")
 	public List<Persona> getPersonas(){
 		return personaService.listarPersonas();
-	}*/
+	}
+	
+	@ModelAttribute("empleados")
+	public List<Empleado> getEmpleados(){
+		return empleadoService.listarEmpleados();
+	}
 	
 	/**************************************************
 	 * HOME
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
+		System.out.println("entra 0001");
+		searchService.searchPersonasByNombre("hola");
 		return new ModelAndView("home");
 	}
 	
@@ -232,31 +238,5 @@ public class AgendaController {
 	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
 	public String getListadoEmpleados() {
 		return "empleados";
-	}
-	
-	@RequestMapping(value = "/empleados/add", method = RequestMethod.GET)		
-	public String formEmpleado() {
-		return "formEmpleado";
-	}
-	
-	@RequestMapping(value = "/empleados/edit", method = RequestMethod.GET)		
-	public String editEmpleado(@RequestParam("id")int id, ModelMap map) {		
-		map.addAttribute("empleado",empleadoService.get(id));
-		return "formEmpleado";
-	}
-	
-	@RequestMapping(value = {"/empleados/add","/empleados/edit"} ,method = RequestMethod.POST)
-	public String saveEmpleado(@Valid Empleado empleado, BindingResult result) {
-		if (result.hasErrors()) {
-			return "formEmpleado";
-		}
-		empleadoService.saveOrUpdate(empleado);
-		return "redirect: /agenda/empleados";
-	}
-	
-	@RequestMapping(value = "/empleados/delete", method = RequestMethod.GET)
-	public String deleteEmpleado(@RequestParam("id")int id){
-		empleadoService.delete(id);
-		return "redirect: /agenda/empleados";
 	}
 }

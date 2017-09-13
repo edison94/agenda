@@ -55,7 +55,7 @@ public class Departamento implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departamentos")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "departamentos")
 	public Set<Empleado> getEmpleadoses() {
 		return this.empleadoses;
 	}

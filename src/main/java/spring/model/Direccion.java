@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -57,7 +57,7 @@ public class Direccion implements Serializable {
 		this.iddirecciones = iddirecciones;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersona")
 	public Persona getPersonas() {
 		return this.personas;

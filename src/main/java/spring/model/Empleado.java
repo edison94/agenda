@@ -61,7 +61,7 @@ public class Empleado implements Serializable {
 		this.idempleados = idempleados;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idCategoria")
 	public Categoria getCategorias() {
 		return this.categorias;
@@ -71,7 +71,7 @@ public class Empleado implements Serializable {
 		this.categorias = categorias;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idDepartamento")
 	public Departamento getDepartamentos() {
 		return this.departamentos;
@@ -81,7 +81,7 @@ public class Empleado implements Serializable {
 		this.departamentos = departamentos;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersona", unique = true, nullable = false)
 	public Persona getPersonas() {
 		return this.personas;

@@ -30,7 +30,7 @@ public class Persona implements Serializable {
 	private String dni;
 	private Date fechaNacimiento;
 	private Empleado empleado;
-	private Direccion direccion;
+	private Set<Direccion> direccion = new HashSet<Direccion>(0);
 	private Set<Telefono> telefonos = new HashSet<Telefono>(0);
 
 	public Persona() {
@@ -42,7 +42,7 @@ public class Persona implements Serializable {
 	}
 
 	public Persona(String nombre, String apellido1, String apellido2, String dni, Date fechaNacimiento,
-			Empleado empleado, Direccion direccion, Set<Telefono> telefonos) {
+			Empleado empleado, Set<Direccion> direccion, Set<Telefono> telefonos) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -111,7 +111,7 @@ public class Persona implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "personas")
 	public Empleado getempleado() {
 		return this.empleado;
 	}
@@ -120,16 +120,16 @@ public class Persona implements Serializable {
 		this.empleado = empleado;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Direccion getdireccion() {
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
+	public Set<Direccion> getdireccion() {
 		return this.direccion;
 	}
 
-	public void setdireccion(Direccion direccion) {
+	public void setdireccion(Set<Direccion> direccion) {
 		this.direccion = direccion;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
 	public Set<Telefono> gettelefonos() {
 		return this.telefonos;
 	}

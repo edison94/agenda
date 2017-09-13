@@ -67,7 +67,7 @@ public class Categoria implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "categorias")
 	public Set<Empleado> getEmpleadoses() {
 		return this.empleadoses;
 	}
