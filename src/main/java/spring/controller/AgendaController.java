@@ -210,9 +210,9 @@ public class AgendaController {
 	/**************************************************
 	 * Empleado
 	 **************************************************/
-	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
+/*	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
 	public String getListadoEmpleados() {
 		return "empleados";
 	}
 >>>>>>> 693ad01ef50a46fbb730bdf90e3c75b18767d3c2
-}
+}*/

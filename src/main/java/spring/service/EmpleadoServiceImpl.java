@@ -13,7 +13,7 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	private IEmpleadoDAO dao;
 	
 	public List<Empleado> listarEmpleados() {
-		return null;
+		return EmpleadosImpl;
 	} 
 	
 	
