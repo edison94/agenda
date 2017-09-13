@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.dao.SearchDAOImpl;
 import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
 import spring.model.Empleado;
 import spring.model.Persona;
-import spring.service.EmpleadoServiceImpl;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
+import spring.service.IEmpleadoService;
+import spring.service.IPersonaService;
 import spring.service.ISearchService;
 
 @Controller
@@ -34,8 +34,11 @@ public class AgendaController {
 	@Autowired
 	private IDepartamentoService departamentoService;
 	
-	/*@Autowired
-	private IPersonaService personaService;*/
+	@Autowired
+	private IPersonaService personaService;
+	
+	@Autowired
+	private IEmpleadoService empleadoService;
 	
 	@Autowired
 	private ISearchService searchService;
@@ -59,6 +62,11 @@ public class AgendaController {
 		return new Persona();
 	}
 	
+	@ModelAttribute("empleado")
+	public Empleado getEmpleadoObjectNew() {
+		return new Empleado();
+	}
+	
 	@ModelAttribute("categorias")
 	public List<Categoria> getCategorias() {
 		return categoriaService.listarCategorias();
@@ -68,11 +76,16 @@ public class AgendaController {
 	public List<Departamento> getDepartamentos() {
 		return departamentoService.listarDepartamentos();
 	}
-	/*
+	
 	@ModelAttribute("personas")
 	public List<Persona> getPersonas(){
 		return personaService.listarPersonas();
-	}*/
+	}
+	
+	@ModelAttribute("empleados")
+	public List<Empleado> getEmpleados(){
+		return empleadoService.listarEmpleados();
+	}
 	
 	/**************************************************
 	 * HOME
@@ -207,10 +220,8 @@ public class AgendaController {
 	/**************************************************
 	 * Empleado
 	 **************************************************/
-/*	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
+	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
 	public String getListadoEmpleados() {
 		return "empleados";
 	}
-
-}*/
 }
