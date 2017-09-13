@@ -23,13 +23,14 @@
 		</ul>
 		
 		<form id="buscador" class="form-inline my-2 my-lg-0" action="buscar" method="get">
-			<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="sujeto">
-				<option selected value="empleado">Empleado</option>
-				<option value="persona">Persona</option>
+			<select id="sujeto" class="custom-select mb-2 mr-sm-2 mb-sm-0" name="sujeto">
+				<option value="empleado">Empleado</option>
+				<option selected value="persona">Persona</option>
 			</select>
-			<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="criterio">
-				<option selected value="categoria">Categoria</option>
-				<option value="departamento">Departamento</option>
+			<select id="criterio" class="custom-select mb-2 mr-sm-2 mb-sm-0" name="criterio">
+				<option value ="Dirección">Dirección</option>
+				<option value = "Nombre">Nombre</option>
+				<option value = "Teléfono">Teléfono</option>
 			</select>
 			<input class="form-control mr-sm-2" type="text" name="texto" >
 			<input type="submit" class="btn btn-info" value="Buscar">
