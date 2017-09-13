@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import spring.model.Categoria;
 import spring.model.Departamento;
+import spring.model.Empleado;
 import spring.model.Persona;
+import spring.service.EmpleadoServiceImpl;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 import spring.service.IPersonaService;
@@ -168,4 +170,39 @@ public class AgendaController {
 		departamentoService.delete(id);
 		return "redirect: /agenda/departamentos";
 	}
+	/************************************************************
+	 * Empleados
+
+	 *************************************************************/
+	@RequestMapping(value = "/Empleado", method = RequestMethod.GET)	
+	public String getListadoEmpleados() {
+		return "Empleado";
+	}
+	
+	@RequestMapping(value = "/Empleado/add", method = RequestMethod.GET)		
+	public String formEmpleados() {
+		return "FormEmpleados";
+	}
+	
+	@RequestMapping(value = {"/empleados/add","/empleados/edit"} ,method = RequestMethod.POST)
+	public String saveEmpleado(@Valid Empleado empleado, BindingResult result) {
+		if (result.hasErrors()) {
+			return "FormEmpleado";
+		}
+		EmpleadoServiceImpl.saveOrUpdate(empleado);
+		return "redirect: /agenda/Empleado";
+	}
+	
+	@RequestMapping(value = "/Empleado/edit", method = RequestMethod.GET)		
+	public String editEmpleado(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("empleados", EmpleadoServiceImpl.get(id));
+		return "FormEmpleado";
+	}
+	
+	@RequestMapping(value = "/Empleado/delete", method = RequestMethod.GET)
+	public String deleteEmpleado(@RequestParam("id") int id) {
+		EmpleadoServiceImpl.delete(id);
+		return "redirect: /agenda/Empleado";
+	}
+	
 }
