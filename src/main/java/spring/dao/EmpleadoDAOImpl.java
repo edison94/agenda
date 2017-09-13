@@ -18,7 +18,7 @@ import spring.model.Empleado;
 
 public class EmpleadoDAOImpl {
 
-	@Transactional
+	/*@Transactional
 	public List<Empleado> listarEmpleados() {
 		System.out.println("entra a 006");
 		Session session = sessionFactory.getCurrentSession();
@@ -28,6 +28,6 @@ public class EmpleadoDAOImpl {
 		query.select(root);
 		Query<Empleado> q = session.createQuery(query);
 		System.out.println("entra a 007");
-		return q.getResultList();
+		return q.getResultList(); */
 	}
 }
