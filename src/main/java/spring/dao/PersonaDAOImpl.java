@@ -12,9 +12,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import spring.model.Persona;
 
+@Repository
 public class PersonaDAOImpl implements IPersonaDAO {
 
 	@Autowired
@@ -48,12 +50,14 @@ public class PersonaDAOImpl implements IPersonaDAO {
 
 	@Transactional
 	public List<Persona> listarPersonas() {
+		System.out.println("entra a 001");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
 		Root<Persona> root = query.from(Persona.class);
 		query.select(root);
 		Query<Persona> q = session.createQuery(query);
+		System.out.println("entra a 002");
 		return q.getResultList();
 	}
 	
