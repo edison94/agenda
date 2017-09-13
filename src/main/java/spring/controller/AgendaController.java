@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.dao.SearchDAOImpl;
 import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
@@ -23,6 +24,7 @@ import spring.model.Persona;
 import spring.service.EmpleadoServiceImpl;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
+import spring.service.ISearchService;
 
 @Controller
 public class AgendaController {
@@ -34,6 +36,9 @@ public class AgendaController {
 	
 	/*@Autowired
 	private IPersonaService personaService;*/
+	
+	@Autowired
+	private ISearchService searchService;
 	
 	
 	/**************************************************
@@ -74,6 +79,8 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
+		System.out.println("entra 0001");
+		searchService.searchPersonasByNombre("hola");
 		return new ModelAndView("home");
 	}
 	
