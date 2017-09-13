@@ -44,7 +44,7 @@ public class Telefono implements Serializable {
 		this.idtelefonos = idtelefonos;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersona")
 	public Persona getPersonas() {
 		return this.personas;
@@ -61,19 +61,6 @@ public class Telefono implements Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Telefono [idtelefonos=");
-		builder.append(idtelefonos);
-		builder.append(", personas=");
-		builder.append(personas);
-		builder.append(", telefono=");
-		builder.append(telefono);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

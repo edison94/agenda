@@ -67,28 +67,13 @@ public class Categoria implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "categorias")
 	public Set<Empleado> getEmpleadoses() {
 		return this.empleadoses;
 	}
 
 	public void setEmpleadoses(Set<Empleado> empleadoses) {
 		this.empleadoses = empleadoses;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Categoria [idcategorias=");
-		builder.append(idcategorias);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", descripcion=");
-		builder.append(descripcion);
-		builder.append(", empleadoses=");
-		builder.append(empleadoses);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

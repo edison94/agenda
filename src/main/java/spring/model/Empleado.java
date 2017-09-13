@@ -61,7 +61,7 @@ public class Empleado implements Serializable {
 		this.idempleados = idempleados;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idCategoria")
 	public Categoria getCategorias() {
 		return this.categorias;
@@ -71,7 +71,7 @@ public class Empleado implements Serializable {
 		this.categorias = categorias;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idDepartamento")
 	public Departamento getDepartamentos() {
 		return this.departamentos;
@@ -81,7 +81,7 @@ public class Empleado implements Serializable {
 		this.departamentos = departamentos;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersona", unique = true, nullable = false)
 	public Persona getPersonas() {
 		return this.personas;
@@ -117,27 +117,6 @@ public class Empleado implements Serializable {
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Empleado [idempleados=");
-		builder.append(idempleados);
-		builder.append(", categorias=");
-		builder.append(categorias);
-		builder.append(", departamentos=");
-		builder.append(departamentos);
-		builder.append(", personas=");
-		builder.append(personas);
-		builder.append(", codEmpleado=");
-		builder.append(codEmpleado);
-		builder.append(", salario=");
-		builder.append(salario);
-		builder.append(", fechaAlta=");
-		builder.append(fechaAlta);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

@@ -55,26 +55,13 @@ public class Departamento implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departamentos")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "departamentos")
 	public Set<Empleado> getEmpleadoses() {
 		return this.empleadoses;
 	}
 
 	public void setEmpleadoses(Set<Empleado> empleadoses) {
 		this.empleadoses = empleadoses;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Departamento [iddepartamento=");
-		builder.append(iddepartamento);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", empleadoses=");
-		builder.append(empleadoses);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

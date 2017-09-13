@@ -16,21 +16,21 @@
 			accept-charset="UTF-8">
 			<form:hidden path="idempleados"/>
 			<div class="form-group">
-				<form:label path="codEmpleado">Código empleados</form:label>
+				<form:label path="codEmpleado">Código empleados</form:label>:
 				<form:input path="codEmpleado" class="form-control" />
 				<div class="has-error">
 					<form:errors path="nombre" class="form-control-feedback" />
 				</div>
 			</div>
 			<div class="form-group">
-				<form:label path="salario">Salario</form:label>
+				<form:label path="salario">Salario</form:label>:
 				<form:input path="salario" class="form-control" />
 				<div class="has-error">
 					<form:errors path="descripcion" class="help-inline" />
 				</div>
 			</div>
 			<div class="form-group">
-				<form:label path="fechaAlta">Fecha Alta</form:label>
+				<form:label path="fechaAlta">Fecha de Alta</form:label>:
 				<form:input path="fechaAlta" class="form-control" />
 				<div class="has-error">
 					<form:errors path="descripcion" class="help-inline" />

@@ -111,7 +111,7 @@ public class Persona implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "personas")
 	public Empleado getempleado() {
 		return this.empleado;
 	}
@@ -120,7 +120,7 @@ public class Persona implements Serializable {
 		this.empleado = empleado;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
 	public Set<Direccion> getdireccion() {
 		return this.direccion;
 	}
@@ -129,38 +129,13 @@ public class Persona implements Serializable {
 		this.direccion = direccion;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
 	public Set<Telefono> gettelefonos() {
 		return this.telefonos;
 	}
 
 	public void settelefonos(Set<Telefono> telefonos) {
 		this.telefonos = telefonos;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Persona [idpersonas=");
-		builder.append(idpersonas);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", apellido1=");
-		builder.append(apellido1);
-		builder.append(", apellido2=");
-		builder.append(apellido2);
-		builder.append(", dni=");
-		builder.append(dni);
-		builder.append(", fechaNacimiento=");
-		builder.append(fechaNacimiento);
-		builder.append(", empleado=");
-		builder.append(empleado);
-		builder.append(", direccion=");
-		builder.append(direccion);
-		builder.append(", telefonos=");
-		builder.append(telefonos);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

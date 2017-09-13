@@ -57,7 +57,7 @@ public class Direccion implements Serializable {
 		this.iddirecciones = iddirecciones;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersona")
 	public Persona getPersonas() {
 		return this.personas;
@@ -101,25 +101,6 @@ public class Direccion implements Serializable {
 
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Direccion [iddirecciones=");
-		builder.append(iddirecciones);
-		builder.append(", personas=");
-		builder.append(personas);
-		builder.append(", direccion=");
-		builder.append(direccion);
-		builder.append(", codPostal=");
-		builder.append(codPostal);
-		builder.append(", localidad=");
-		builder.append(localidad);
-		builder.append(", provincia=");
-		builder.append(provincia);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

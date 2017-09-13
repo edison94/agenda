@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,9 +47,9 @@
 								<tr>
 									<td>${empleado.codEmpleado}</td>
 									<td>${empleado.personas.nombre}</td>
-									<td>${empleado.personas.apellido1} ${empleado.persona.apellido2}</td>
+									<td>${empleado.personas.apellido1} ${empleado.personas.apellido2}</td>
 									<td>${empleado.salario}</td>
-									<td>${empleado.fechaAlta}</td>
+									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${empleado.fechaAlta}" /></td>
 									<td><a href="empleados/edit?id=${empleado.idempleados}"
 										class="btn btn-warning">Editar</a> <a
 										href="empleados/delete?id=${empleado.idempleados}"
