@@ -11,10 +11,8 @@ public interface IEmpleadoDAO {
 	public void saveOrUpdate(Empleado empleado);
 	
 	public void delete(int id);
-	
-	public List<Empleado> listarEmpleados();
 
-	public List<Empleado> List();
+	public List<Empleado> list();
 
 	
 }
