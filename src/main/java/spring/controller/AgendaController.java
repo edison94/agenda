@@ -209,10 +209,11 @@ public class AgendaController {
 	public void handleCustomException() {
 		//esto se haria mejor con ajax
 	}
-	/***
-	 * 
-	 * EMPLEADOS
-	 */
+
+	
+	/**************************************************
+	 * Empleado
+	 **************************************************/
 	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
 	public String getListadoEmpleados() {
 		return "empleados";

@@ -17,7 +17,7 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	} 
 
 	public Empleado get(int id) {
-		return dao.getIdempleados(id);
+		return dao.get(id);
 	}
 
 	public void add(Empleado empleado) {
@@ -35,7 +35,6 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	public  void saveOrUpdate(Empleado empleado) {
 		dao.saveOrUpdate(empleado);
 	}
-
 }
 
 

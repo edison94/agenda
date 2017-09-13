@@ -23,11 +23,6 @@ public class EmpleadoDAOImpl implements IEmpleadoDAO{
 	private SessionFactory sessionFactory;
 
 	@Transactional
-	public Empleado getIdempleados(int id) {
-		return sessionFactory.getCurrentSession().find(Empleado.class, id);
-	}
-
-	@Transactional
 	public void saveOrUpdate(Empleado empleado) {
 		sessionFactory.getCurrentSession().saveOrUpdate(empleado);
 	}
@@ -48,5 +43,10 @@ public class EmpleadoDAOImpl implements IEmpleadoDAO{
 		query.select(root);
 		Query<Empleado> q = session.createQuery(query);
 		return q.getResultList();
+	}
+
+	@Transactional
+	public Empleado get(int id) {
+		return sessionFactory.getCurrentSession().find(Empleado.class, id);
 	}
 }

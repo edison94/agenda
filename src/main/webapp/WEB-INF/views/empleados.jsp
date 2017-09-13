@@ -32,16 +32,23 @@
 					<table class="table table-hover">
 						<thead class="table-info">
 							<tr>
+								<th>Código</th>
 								<th>Nombre</th>
-								<th>Acciones</th>
+								<th>Apellidos</th>
+								<th>Salario</th>
+								<th>Fecha de alta</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${empleados}" var="empleado">
 								<tr>
-									<th>${empleado.personas.nombre}</th>
-									<td><a
-										href="empleados/edit?id=${empleado.idempleados}"
+									<td>${empleado.codigoEmpleado}</td>
+									<td>${empleado.persona.nombre}</td>
+									<td>${empleado.persona.apellido1} ${empleado.persona.apellido2}</td>
+									<td>${empleado.salario}</td>
+									<td>${empleado.fechaAlta}</td>
+									<td><a href="empleados/edit?id=${empleado.idempleados}"
 										class="btn btn-warning">Editar</a> <a
 										href="empleados/delete?id=${empleado.idempleados}"
 										class="btn btn-danger">Eliminar</a></td>
