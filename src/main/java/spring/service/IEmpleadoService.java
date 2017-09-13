@@ -6,7 +6,6 @@ import spring.model.Empleado;
 ;
 
 public interface IEmpleadoService {
-public List<Empleado> listarEmpleados();
 	
 	public Empleado get(int id);
 	
@@ -17,5 +16,7 @@ public List<Empleado> listarEmpleados();
 	public void delete(int id);
 
 	public void saveOrUpdate(Empleado empleados);
+	
+	public List<Empleado> listarEmpleados();
 
 }

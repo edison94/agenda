@@ -12,14 +12,9 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	@Autowired
 	private IEmpleadoDAO dao;
 	
-	public List<Empleado> listarEmpleados() {
-		return null;
-	} 
-	
-	
 
 	public Empleado get(int id) {
-		return dao.getEmpleado(id);
+		return dao.get(id);
 	}
 
 	public void add(Empleado empleado) {
@@ -36,6 +31,11 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 
 	public  void saveOrUpdate(Empleado empleado) {
 		dao.saveOrUpdate(empleado);
+	}
+
+	public List<Empleado> listarEmpleados() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
