@@ -11,14 +11,14 @@
 	<div class="container">
 		<jsp:include page="templates/navbar.jsp"></jsp:include>
 		<h2>Listado de empleados</h2>
-
 		<c:choose>
-			<c:when test="${empty empleado}">
+			<c:when test="${empty empleados}">
 				<section class="jumbotron text-center">
 					<div class="container">
 						<h1 class="jumbotron-heading">No hay empleados</h1>
 						<p>
-							<a href="empleado/add" class="btn btn-success">Añadir empleado</a>
+							<a href="empleados/add" class="btn btn-success">Añadir
+								empleado</a>
 						</p>
 					</div>
 				</section>
@@ -26,7 +26,8 @@
 			<c:otherwise>
 				<div class="row">
 					<p>
-						<a href="empleado/add" class="btn btn-success">Añadir empleado</a>
+						<a href="empleados/add" class="btn btn-success">Añadir
+							empleado</a>
 					</p>
 					<table class="table table-hover">
 						<thead class="table-info">
@@ -47,9 +48,9 @@
 									<td>${empleado.persona.apellido1} ${empleado.persona.apellido2}</td>
 									<td>${empleado.salario}</td>
 									<td>${empleado.fechaAlta}</td>
-									<td><a href="empleado/edit?id=${empleado.idempleados}"
+									<td><a href="empleados/edit?id=${empleado.idempleados}"
 										class="btn btn-warning">Editar</a> <a
-										href="empleado/delete?id=${empleado.idempleados}"
+										href="empleados/delete?id=${empleado.idempleados}"
 										class="btn btn-danger">Eliminar</a></td>
 								</tr>
 							</c:forEach>
