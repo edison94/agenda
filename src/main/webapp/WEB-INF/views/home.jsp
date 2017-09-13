@@ -23,6 +23,11 @@
 				class="btn btn-primary" href="departamentos"
 				role="button">Ir a lista de Departamentos</a>
 			</li>
+			<li class="list-group-item justify-content-between">Empleados<span
+				class="badge badge-pill badge-primary">0</span><a
+				class="btn btn-primary" href="empleados"
+				role="button">Ir a lista de Empleados</a>
+			</li>
 		</ul>
 	</div>
 </body>

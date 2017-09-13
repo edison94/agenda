@@ -23,6 +23,7 @@ import spring.model.Persona;
 import spring.service.EmpleadoServiceImpl;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
+import spring.service.IEmpleadoService;
 
 @Controller
 public class AgendaController {
@@ -31,6 +32,9 @@ public class AgendaController {
 	
 	@Autowired
 	private IDepartamentoService departamentoService;
+	
+	@Autowired
+	private IEmpleadoService empleadoService;
 	
 	/*@Autowired
 	private IPersonaService personaService;*/
@@ -54,6 +58,11 @@ public class AgendaController {
 		return new Persona();
 	}
 	
+	@ModelAttribute("empleado")
+	public Empleado getEmpleadoObjectNew() {
+		return new Empleado();
+	}
+	
 	@ModelAttribute("categorias")
 	public List<Categoria> getCategorias() {
 		return categoriaService.listarCategorias();
@@ -62,6 +71,11 @@ public class AgendaController {
 	@ModelAttribute("departamentos")
 	public List<Departamento> getDepartamentos() {
 		return departamentoService.listarDepartamentos();
+	}
+	
+	@ModelAttribute("empleados")
+	public List<Empleado> getEmpleados() {
+		return empleadoService.listarEmpleados();
 	}
 	/*
 	@ModelAttribute("personas")
@@ -200,10 +214,34 @@ public class AgendaController {
 	/**************************************************
 	 * Empleado
 	 **************************************************/
-/*	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
+	@RequestMapping(value = "/empleados", method = RequestMethod.GET)	
 	public String getListadoEmpleados() {
 		return "empleados";
 	}
-
-}*/
+	
+	@RequestMapping(value = "/empleados/add", method = RequestMethod.GET)		
+	public String formEmpleado() {
+		return "formEmpleado";
+	}
+	
+	@RequestMapping(value = "/empleados/edit", method = RequestMethod.GET)		
+	public String editEmpleado(@RequestParam("id")int id, ModelMap map) {		
+		map.addAttribute("empleado",empleadoService.get(id));
+		return "formEmpleado";
+	}
+	
+	@RequestMapping(value = {"/empleados/add","/empleados/edit"} ,method = RequestMethod.POST)
+	public String saveEmpleado(@Valid Empleado empleado, BindingResult result) {
+		if (result.hasErrors()) {
+			return "formEmpleado";
+		}
+		empleadoService.saveOrUpdate(empleado);
+		return "redirect: /agenda/empleados";
+	}
+	
+	@RequestMapping(value = "/empleados/delete", method = RequestMethod.GET)
+	public String deleteEmpleado(@RequestParam("id")int id){
+		empleadoService.delete(id);
+		return "redirect: /agenda/empleados";
+	}
 }
