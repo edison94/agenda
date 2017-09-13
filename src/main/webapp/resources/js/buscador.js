@@ -1,17 +1,17 @@
 $( document ).ready(function() {
-	$("select#sujeto").on("load",cargarOpciones);
 	$("select#sujeto").change(cargarOpciones);
 });
 
-function cargarOpciones() {
-	  $.get('opciones', {sujeto: $(this).val()}, function(responseJson) {
-		  var $select = $('#criterio');
-        $select.find('option').remove();
-        $.each(responseJson, function(key, value) {
-            $('<option>').val(value).text(value).appendTo($select);
-        });
-        $select.change(function(event) {
-      	  
-        });
-    });
+function cargarOpciones() { 
+	var op = $(this).val() == "empleado"?0:1;
+	  var ops = opciones[op];
+	  $("select#criterio").find("option").remove();
+	  ops.forEach(function(item){
+		  $("<option>").val(item).html(item).appendTo($("select#criterio"));
+	  });
 }
+
+var opciones = [
+	["Categoría", "Departamento", "Dirección", "Nombre", "Teléfono"],
+	["Dirección", "Nombre", "Teléfono"]
+]
