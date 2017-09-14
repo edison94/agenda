@@ -93,8 +93,9 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
-		System.out.println("entra 0001");
-		searchService.searchPersonasByNombre("hola");
+		System.out.println("entra controller");
+		searchService.searchPersonasByNombre("chez");
+		System.out.println("sale controller");
 		return new ModelAndView("home");
 	}
 

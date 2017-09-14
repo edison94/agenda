@@ -29,17 +29,22 @@ public class SearchDAOImpl implements ISearchDAO {
 	
 	@Transactional
 	public List<Persona> searchPersonasByNombre(String nombre) {
+		System.out.println("entra dao");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
 		Root<Persona> root = query.from(Persona.class);
+		Predicate like = builder.or(
+				builder.like(root.<String>get("nombre"), "%"+nombre+"%"),
+				builder.like(root.<String>get("apellido1"), "%"+nombre+"%"),
+				builder.like(root.<String>get("apellido2"), "%"+nombre+"%")
+				);
 		query.select(root);
+		query.where(like);
 		Query<Persona> q = session.createQuery(query);
-		List<Persona> personas = q.getResultList();
-		
-		System.out.println("No ha petado");
-		System.out.println(personas);
-		return personas;
+		System.out.println("sale DAO");
+		System.out.println(q.getResultList());
+		return q.getResultList();
 	}
 
 	@Transactional

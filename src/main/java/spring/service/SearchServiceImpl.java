@@ -16,6 +16,7 @@ public class SearchServiceImpl implements ISearchService {
 	private ISearchDAO dao;
 	
 	public List<Persona> searchPersonasByNombre(String nombre) {
+		System.out.println("entra service");
 		return dao.searchPersonasByNombre(nombre);
 	}
 	
