@@ -31,9 +31,9 @@
 				<option selected value="persona">Persona</option>
 			</select> <select id="criterio" class="custom-select mb-2 mr-sm-2 mb-sm-0"
 				name="criterio">
-				<option value="Dirección">Dirección</option>
-				<option value="Nombre">Nombre</option>
-				<option value="Teléfono">Teléfono</option>
+				<option value="direccion">Dirección</option>
+				<option value="nombre">Nombre</option>
+				<option value="telefono">Teléfono</option>
 			</select> <input class="form-control mr-sm-2" type="text" name="texto">
 			<input type="submit" class="btn btn-info" value="Buscar">
 		</form>

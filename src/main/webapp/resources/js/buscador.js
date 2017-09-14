@@ -2,7 +2,8 @@ $( document ).ready(function() {
 	$("select#sujeto").change(cargarOpciones);
 	$(".alert").alert()
 	$(".eliminar").click(function(){
-		var entry = $(this).parent();
+		
+		/*var entry = $(this).parent();
 		$.post( entry.attr("data-page") +"/delete", { id: entry.find("input").val() })
 		  .done(function(data) {
 			  if (!data.error){
@@ -11,7 +12,7 @@ $( document ).ready(function() {
 				  $('#myModal').modal('show');
 				  $('#myModal').find('.modal-body').html(data.error);
 			  }
-		  });
+		  });*/
 	});
 });
 
@@ -28,19 +29,12 @@ function cargarOpciones() {
 	  var ops = opciones[op];
 	  var select = $("select#criterio");
 	  select.find("option").remove();
-	  ops.forEach(function(item){
-		  $("<option>").val(item).html(item).appendTo(select);
-	  });
-	  
-	  select.change(function(){
-		  $.get('departamentos.json', function(responseJson) {
-			  console.log("cambio");
-              console.log(responseJson);
-          });
+	  Object.keys(ops).forEach(function(item){
+		  console.log(item);
+		  $("<option>").val(item).html(ops[item]).appendTo(select);
 	  });
 }
 
-var opciones = [
-	["Categoría", "Departamento", "Dirección", "Nombre", "Teléfono"],
-	["Dirección", "Nombre", "Teléfono"]
-]
+var persona = {"direccion": "Dirección", "nombre": "Nombre", "telefono": "Teléfono"};
+var empleado = {"categoria": "Categoría", "departamento": "Departamento","direccion": "Dirección", "nombre": "Nombre", "telefono": "Teléfono"};
+var opciones = [empleado,persona];
