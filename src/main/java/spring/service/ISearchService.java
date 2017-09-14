@@ -10,4 +10,8 @@ public interface ISearchService {
 	public List<Persona> searchPersonasByTelefono(String telefono);
 	public List<Persona> searchPersonasByDireccion(String direccion);
 	public List<Empleado> searchEmpleadosByDepartamento(String nombre);
+	public List<Empleado> searchEmpleadosByDireccion(String texto);
+	public List<Empleado> searchEmpleadosByTelefono(String texto);
+	public List<Empleado> searchEmpleadosByNombre(String texto);
+	public List<Empleado> searchEmpleadosByCategoria(String texto);
 }

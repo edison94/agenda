@@ -10,4 +10,8 @@ public interface ISearchDAO {
 	public List<Persona> searchPersonasByTelefono(String telefono);
 	public List<Persona> searchPersonasByDireccion(String direccion);
 	public List<Empleado> searchEmpleadosByDepartamento(String departamento);
+	public List<Empleado> searchEmpleadosByCategoria(String categoria);
+	public List<Empleado> searchEmpleadosByNombre(String nombre);
+	public List<Empleado> searchEmpleadosByTelefono(String telefono);
+	public List<Empleado> searchEmpleadosByDireccion(String direccion);
 }

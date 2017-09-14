@@ -285,6 +285,7 @@ public class AgendaController {
 			return "formEmpleado";
 		}
 		empleadoService.saveOrUpdate(empleado);
+		personaService.saveOrUpdate(empleado.getPersonas());
 		return "redirect: /agenda/empleados";
 	}
 	
@@ -347,14 +348,17 @@ public class AgendaController {
 				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
 				return "empleados";
 			}else if (criterio.equals("direccion")){
-				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				model.addAttribute("empleados",searchService.searchEmpleadosByDireccion(texto));
 				return "empleados";
 			}else if (criterio.equals("telefono")){
-				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				model.addAttribute("empleados",searchService.searchEmpleadosByTelefono(texto));
 				return "empleados";
 			}else if (criterio.equals("nombre")){
-				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				model.addAttribute("empleados",searchService.searchEmpleadosByNombre(texto));
 				return "empleados";		
+			}else if (criterio.equals("categoria")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByCategoria(texto));
+				return "empleados";
 			}
 			
 		}else if (sujeto.equals("persona")){

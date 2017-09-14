@@ -45,8 +45,6 @@ public class SearchDAOImpl implements ISearchDAO {
 		return q.getResultList();
 	}
 	
-	
-
 	@Transactional
 	public List<Persona> searchPersonasByTelefono(String telefono) {
 		Session session = sessionFactory.getCurrentSession();
@@ -83,8 +81,6 @@ public class SearchDAOImpl implements ISearchDAO {
 		return q.getResultList();
 	}
 
-
-
 	@Transactional
 	public List<Empleado> searchEmpleadosByDepartamento(String departamento) {
 		Session session = sessionFactory.getCurrentSession();
@@ -99,7 +95,69 @@ public class SearchDAOImpl implements ISearchDAO {
 		Query<Empleado> q = session.createQuery(query);
 		return q.getResultList();
 	}
-	
-	
 
+	@Transactional
+	public List<Empleado> searchEmpleadosByCategoria(String categoria) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
+		Root<Empleado> root = query.from(Empleado.class);
+		Predicate like = builder.and(
+			    builder.like( root.get("categorias").<String>get("nombre"),"%"+categoria+"%" )
+			);
+		query.select(root);
+		query.where(like);
+		Query<Empleado> q = session.createQuery(query);
+		return q.getResultList();
+	}
+	
+	@Transactional
+	public List<Empleado> searchEmpleadosByTelefono(String telefono) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
+		Root<Empleado> root = query.from(Empleado.class);
+		Predicate like = builder.and(
+			    builder.like( root.get("personas").get("telefonos").<String>get("telefono"),"%"+telefono+"%" )
+			);
+		query.select(root);
+		query.where(like);
+		Query<Empleado> q = session.createQuery(query);
+		return q.getResultList();
+	}
+	
+	@Transactional
+	public List<Empleado> searchEmpleadosByNombre(String nombre) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
+		Root<Empleado> root = query.from(Empleado.class);
+		Predicate like = builder.or(
+				builder.like(root.get("personas").<String>get("nombre"), "%"+nombre+"%"),
+				builder.like(root.get("personas").<String>get("apellido1"), "%"+nombre+"%"),
+				builder.like(root.get("personas").<String>get("apellido2"), "%"+nombre+"%")
+				);
+		query.select(root);
+		query.where(like);
+		Query<Empleado> q = session.createQuery(query);
+		return q.getResultList();
+	}
+	
+	@Transactional
+	public List<Empleado> searchEmpleadosByDireccion(String direccion) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
+		Root<Empleado> root = query.from(Empleado.class);		
+		Predicate like = builder.or(
+				builder.like( root.get("personas").get("direccion").<String>get("direccion"),"%"+direccion+"%" ),
+				builder.like( root.get("personas").get("direccion").<String>get("codPostal"),"%"+direccion+"%" ),
+				builder.like( root.get("personas").get("direccion").<String>get("localidad"),"%"+direccion+"%" ),
+				builder.like( root.get("personas").get("direccion").<String>get("provincia"),"%"+direccion+"%" )
+			);
+		query.select(root);
+		query.where(like);
+		Query<Empleado> q = session.createQuery(query);
+		return q.getResultList();
+	}
 }
