@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import spring.model.Categoria;
 import spring.model.Empleado;
 import spring.model.Persona;
+import spring.model.Telefono;
 
 @Repository
 public class SearchDAOImpl implements ISearchDAO {
@@ -46,6 +48,30 @@ public class SearchDAOImpl implements ISearchDAO {
 		System.out.println(q.getResultList());
 		return q.getResultList();
 	}
+	
+	
+
+	@Transactional
+	public List<Persona> searchPersonasByTelefono(String telefono) {
+		System.out.println("entra dao"+telefono);
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
+		Root<Persona> root = query.from(Persona.class);
+		Join<Persona,Telefono> join = root.join("telefonos");
+		
+		System.out.println("works at least until 001");
+		Predicate like = builder.like( join.<String>get("telefono"),"%"+telefono+"%" );
+		System.out.println("works at least until 002");
+		query.select(root);
+		query.where(like);
+		Query<Persona> q = session.createQuery(query);
+		System.out.println("sale DAO");
+		System.out.println(q.getResultList());
+		return q.getResultList();
+	}
+
+
 
 	@Transactional
 	public List<Empleado> searchEmpleadosByDepartamento(String departamento) {

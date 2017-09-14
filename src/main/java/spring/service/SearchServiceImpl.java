@@ -16,10 +16,16 @@ public class SearchServiceImpl implements ISearchService {
 	private ISearchDAO dao;
 	
 	public List<Persona> searchPersonasByNombre(String nombre) {
-		System.out.println("entra service");
 		return dao.searchPersonasByNombre(nombre);
 	}
 	
+	
+	public List<Persona> searchPersonasByTelefono(String telefono) {	
+		return dao.searchPersonasByTelefono(telefono);
+	}
+
+
+
 	public List<Empleado> searchEmpleadosByDepartamento(String nombre) {
 		return dao.searchEmpleadosByDepartamento(nombre);
 	}
