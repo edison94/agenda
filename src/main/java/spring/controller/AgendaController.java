@@ -137,32 +137,36 @@ public class AgendaController {
 	 * Persona
 	 **************************************************/
 
-	/*
-	 * @RequestMapping(value = "/personas", method = RequestMethod.GET) public
-	 * String getListadoPersonas() { return "personas"; }
-	 * 
-	 * 
-	 * 
-	 * @RequestMapping(value = {"/personas/add","/personas/edit"} ,method =
-	 * RequestMethod.POST) public String savePersona(@Valid Persona persona,
-	 * BindingResult result) { if (result.hasErrors()) { return "formPersona"; }
-	 * personaService.saveOrUpdate(persona); return
-	 * "redirect: /agenda/personas"; }
-	 * 
-	 * 
-	 * @RequestMapping(value = "/personas/add", method = RequestMethod.GET)
-	 * public String formPersonas() { return "formPersona"; }
-	 * 
-	 * @RequestMapping(value = "/personas/edit", method = RequestMethod.GET)
-	 * public String editPersona(@RequestParam("id")int id, ModelMap map) {
-	 * map.addAttribute("persona",personaService.getPersona(id)); return
-	 * "formPersona"; }
-	 * 
-	 * 
-	 * @RequestMapping(value = "/personas/delete", method = RequestMethod.GET)
-	 * public String deletePersona(@RequestParam int id) {
-	 * personaService.deletePersona(id); return "redirect: /agenda/personas"; }
-	 */
+	@RequestMapping(value = "/personas", method = RequestMethod.GET)
+	public String getListadoPersonas() {
+		return "personas";
+	}
+
+	@RequestMapping(value = { "/personas/add", "/personas/edit" }, method = RequestMethod.POST)
+	public String savePersona(@Valid Persona persona, BindingResult result) {
+		if (result.hasErrors()) {
+			return "formPersona";
+		}
+		personaService.saveOrUpdate(persona);
+		return "redirect: /agenda/personas";
+	}
+
+	@RequestMapping(value = "/personas/add", method = RequestMethod.GET)
+	public String formPersonas() {
+		return "formPersona";
+	}
+
+	@RequestMapping(value = "/personas/edit", method = RequestMethod.GET)
+	public String editPersona(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("persona", personaService.getPersona(id));
+		return "formPersona";
+	}
+
+	@RequestMapping(value = "/personas/delete", method = RequestMethod.GET)
+	public String deletePersona(@RequestParam int id) {
+		personaService.deletePersona(id);
+		return "redirect: /agenda/personas";
+	}
 
 	/**************************************************
 	 * Departamento

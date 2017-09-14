@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,7 +45,7 @@
 									<td>${persona.nombre}</td>
 									<td>${persona.apellido1} ${persona.apellido2}</td>
 									<td>${persona.dni}</td>
-									<td>${persona.fechaNacimiento}</td>
+									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${persona.fechaNacimiento}" /></td>
 									<td><a href="persona/edit?id=${persona.idpersonas}"
 										class="btn btn-warning">Editar</a> <a
 										href="persona/delete?id=${persona.idpersonas}"
