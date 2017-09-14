@@ -16,7 +16,7 @@
 			<li class="list-group-item justify-content-between">Categorias<span
 				class="badge badge-pill badge-primary">0</span><a
 				class="btn btn-primary" href="categorias"
-				role="button">Ir a lista de Categorias</a>
+				role="button">Ir a lista <i class="fa fa-external-link" aria-hidden="true"></i></a>
 			</li>
 			<li class="list-group-item justify-content-between">Departamentos<span
 				class="badge badge-pill badge-primary">0</span><a

@@ -42,7 +42,8 @@
 								<tr>
 									<th>${categoria.nombre}</th>
 									<th>${categoria.descripcion}</th>
-									<td data-page="categorias" class="text-right" ><a href="categorias/edit?id=${categoria.idcategorias}"
+									<td data-page="categorias" class="text-right" ><a href="categorias/get?id=${categoria.idcategorias}"
+										class="btn btn-primary">Detalle</a> <a href="categorias/edit?id=${categoria.idcategorias}"
 										class="btn btn-warning">Editar</a>
 										<button class="btn btn-danger eliminar" >Eliminar</button>
 										<input type="hidden" value="${ categoria.idcategorias }">

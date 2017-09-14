@@ -120,6 +120,13 @@ public class AgendaController {
 	public String getListadoCategorias() {
 		return "categorias";
 	}
+	
+	@RequestMapping(value = "/categorias/get", method = RequestMethod.GET)
+	public String getCategoria(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("categoria", categoriaService.getCategoria(id));
+		map.addAttribute("readonly", "true");
+		return "formCategoria";
+	}
 
 	@RequestMapping(value = { "/categorias/add", "/categorias/edit" }, method = RequestMethod.POST)
 	public String saveCategoria(@Valid Categoria categoria, BindingResult result) {
@@ -207,6 +214,13 @@ public class AgendaController {
 	@RequestMapping(value = "/departamentos", method = RequestMethod.GET)
 	public String getListadoDepartamentos() {
 		return "departamentos";
+	}
+	
+	@RequestMapping(value = "/departamentos/get", method = RequestMethod.GET)
+	public String getDepartamento(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("departamento", departamentoService.get(id));
+		map.addAttribute("readonly", "true");
+		return "formDepartamento";
 	}
 
 	@RequestMapping(value = "/departamentos/add", method = RequestMethod.GET)
