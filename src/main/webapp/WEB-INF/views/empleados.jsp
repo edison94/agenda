@@ -19,7 +19,7 @@
 					<div class="container">
 						<h1 class="jumbotron-heading">No hay empleados</h1>
 						<p>
-							<a href="empleados/add" class="btn btn-success">Añadir
+							<a href="/agenda/empleados/add" class="btn btn-success">Añadir
 								empleado</a>
 						</p>
 					</div>
@@ -28,7 +28,7 @@
 			<c:otherwise>
 				<div class="row">
 					<p>
-						<a href="empleados/add" class="btn btn-success">Añadir
+						<a href="/agenda/empleados/add" class="btn btn-success">Añadir
 							empleado</a>
 					</p>
 					<table class="table table-hover">
@@ -52,16 +52,17 @@
 									<td>${empleado.salario}</td>
 									<td><fmt:formatDate pattern="dd/MM/yyyy"
 											value="${empleado.fechaAlta}" /></td>
-									<td class="text-right"><a
+									<td data-page="empleados" class="text-right"><a
 										href="empleados/get?id=${empleado.idempleados}"
 										class="btn btn-primary"><i class="fa fa-list"
 											aria-hidden="true"></i></a> <a
 										href="empleados/edit?id=${empleado.idempleados}"
 										class="btn btn-warning"><i class="fa fa-pencil-square-o"
-											aria-hidden="true"></i></a> <a
-										href="empleados/delete?id=${empleado.idempleados}"
-										class="btn btn-danger"><i class="fa fa-trash"
-											aria-hidden="true"></i> </a></td>
+											aria-hidden="true"></i></a>
+											<button class="btn btn-danger eliminar">
+												<i class="fa fa-trash" aria-hidden="true"></i>
+											</button> <input type="hidden" value="${ empleado.idempleados }">
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
