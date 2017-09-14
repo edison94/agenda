@@ -19,7 +19,7 @@
 					<div class="container">
 						<h1 class="jumbotron-heading">No hay personas</h1>
 						<p>
-							<a href="persona/add" class="btn btn-success">Añadir persona</a>
+							<a href="/agenda/personas/add" class="btn btn-success">Añadir persona</a>
 						</p>
 					</div>
 				</section>
@@ -27,7 +27,7 @@
 			<c:otherwise>
 				<div class="row">
 					<p>
-						<a href="personas/add" class="btn btn-success">Añadir persona</a>
+						<a href="/agenda/personas/add" class="btn btn-success">Añadir persona</a>
 					</p>
 					<table class="table table-hover">
 						<thead class="table-info">

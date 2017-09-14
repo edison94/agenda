@@ -35,27 +35,23 @@ public class SearchServiceImpl implements ISearchService {
 	}
 
 
-	public List<Empleado> searchEmpleadosByDireccion(String texto) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> searchEmpleadosByDireccion(String direccion) {
+		return dao.searchEmpleadosByDireccion(direccion);
 	}
 
 
-	public List<Empleado> searchEmpleadosByTelefono(String texto) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> searchEmpleadosByTelefono(String telefono) {
+		return dao.searchEmpleadosByTelefono(telefono);
 	}
 
 
-	public List<Empleado> searchEmpleadosByNombre(String texto) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> searchEmpleadosByNombre(String nombre) {
+		return dao.searchEmpleadosByNombre(nombre);
 	}
 
 
-	public List<Empleado> searchEmpleadosByCategoria(String texto) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> searchEmpleadosByCategoria(String categoria) {
+		return dao.searchEmpleadosByCategoria(categoria);
 	}
 	
 }
