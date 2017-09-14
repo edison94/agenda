@@ -323,14 +323,38 @@ public class AgendaController {
 	public String search(@RequestParam Map<String,String> requestParams,ModelMap model) {
 		System.out.println("entra en el metodo buscar");
 		System.out.println(requestParams.get("sujeto"));
+		
 		String sujeto = requestParams.get("sujeto");
 		String criterio = requestParams.get("criterio");
+		String texto = requestParams.get("texto");
+		
 		if(sujeto.equals("empleado")){
-			model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento("RRHH"));
-			return "empleados";
+			if(criterio.equals("departamento")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";
+			}else if (criterio.equals("direccion")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";
+			}else if (criterio.equals("telefono")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";
+			}else if (criterio.equals("nombre")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";		
+			}
+			
 		}else if (sujeto.equals("persona")){
-			model.addAttribute("personas",searchService.searchPersonasByNombre("Luis"));
-			return "personas";			
+			if(criterio.equals("direccion")){
+				model.addAttribute("personas",searchService.searchPersonasByDireccion(texto));
+				return "personas";	
+			}else if(criterio.equals("telefono")){
+				model.addAttribute("personas",searchService.searchPersonasByTelefono(texto));
+				return "personas";	
+			}else if (criterio.equals("nombre")){
+				model.addAttribute("personas",searchService.searchPersonasByNombre(texto));
+				return "personas";	
+			}
+					
 		}
 		return "redirect: /agenda";
 		
