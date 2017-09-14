@@ -15,6 +15,14 @@ $( document ).ready(function() {
 	});
 });
 
+$(function() {
+	$('.datepicker').datepicker({
+	    format: 'dd/mm/yyyy',
+	    todayBtn: "linked",
+	    language: "es"
+	});
+});
+
 function cargarOpciones() { 
 	var op = $(this).val() == "empleado"?0:1;
 	  var ops = opciones[op];

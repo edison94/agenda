@@ -27,7 +27,7 @@
 			<c:otherwise>
 				<div class="row">
 					<p>
-						<a href="persona/add" class="btn btn-success">Añadir persona</a>
+						<a href="personas/add" class="btn btn-success">Añadir persona</a>
 					</p>
 					<table class="table table-hover">
 						<thead class="table-info">
@@ -46,7 +46,7 @@
 									<td>${persona.apellido1} ${persona.apellido2}</td>
 									<td>${persona.dni}</td>
 									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${persona.fechaNacimiento}" /></td>
-									<td data-page="personas" ><a href="persona/edit?id=${persona.idpersonas}"
+									<td class="text-right" data-page="personas" ><a href="persona/edit?id=${persona.idpersonas}"
 										class="btn btn-warning">Editar</a>
 										<button class="btn btn-danger eliminar" >Eliminar</button>
 										<input type="hidden" value="${ persona.idpersonas }">

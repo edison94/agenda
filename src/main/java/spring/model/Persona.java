@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "personas", catalog = "agenda")
 public class Persona implements Serializable {
@@ -28,6 +30,7 @@ public class Persona implements Serializable {
 	private String apellido1;
 	private String apellido2;
 	private String dni;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaNacimiento;
 	private Empleado empleado;
 	private Set<Direccion> direccion = new HashSet<Direccion>(0);
@@ -130,11 +133,11 @@ public class Persona implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
-	public Set<Telefono> gettelefonos() {
+	public Set<Telefono> getTelefonos() {
 		return this.telefonos;
 	}
 
-	public void settelefonos(Set<Telefono> telefonos) {
+	public void setTelefonos(Set<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 

@@ -17,13 +17,16 @@ import org.springframework.web.servlet.ModelAndView;
 import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
+import spring.model.Direccion;
 import spring.model.Empleado;
 import spring.model.Persona;
+import spring.model.Telefono;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 import spring.service.IEmpleadoService;
 import spring.service.IPersonaService;
 import spring.service.ISearchService;
+import spring.service.ITelefonoService;
 
 @Controller
 public class AgendaController {
@@ -38,6 +41,9 @@ public class AgendaController {
 
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private ITelefonoService telefonoService;
 
 	@Autowired
 	private ISearchService searchService;
@@ -63,6 +69,16 @@ public class AgendaController {
 	@ModelAttribute("empleado")
 	public Empleado getEmpleadoObjectNew() {
 		return new Empleado();
+	}
+	
+	@ModelAttribute("telefono")
+	public Telefono getTelefonoObjectNew() {
+		return new Telefono();
+	}
+	
+	@ModelAttribute("direccion")
+	public Direccion getDireccionObjectNew() {
+		return new Direccion();
 	}
 
 	@ModelAttribute("categorias")
@@ -90,8 +106,9 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
-		System.out.println("entra 0001");
-		searchService.searchPersonasByNombre("hola");
+		System.out.println("entra controller");
+		searchService.searchPersonasByNombre("chez");
+		System.out.println("sale controller");
 		return new ModelAndView("home");
 	}
 
@@ -143,6 +160,13 @@ public class AgendaController {
 	@RequestMapping(value = "/personas", method = RequestMethod.GET)
 	public String getListadoPersonas() {
 		return "personas";
+	}
+	
+	@RequestMapping(value = "/personas/get", method = RequestMethod.GET)
+	public String getPersona(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("persona", personaService.getPersona(id));
+		map.addAttribute("readonly", "true");
+		return "formPersona";
 	}
 
 	@RequestMapping(value = { "/personas/add", "/personas/edit" }, method = RequestMethod.POST)
@@ -255,5 +279,35 @@ public class AgendaController {
 			errorMap.put("error", "No se ha podido borrar el empleado.");
 		}
 		return errorMap;
+	}
+	
+	/**************************************************
+	 * Telefono
+	 **************************************************/
+	
+	@RequestMapping(value = { "/personas/telefonos/add", "/personas/telefonos/edit" }, method = RequestMethod.POST)
+	public String saveTelefono(@Valid Telefono telefono, BindingResult result) {
+		if (result.hasErrors()) {
+			return "formTelefono";
+		}
+		telefonoService.saveOrUpdate(telefono);
+		return "redirect: /agenda/categorias";
+	}
+
+	@RequestMapping(value = "/personas/telefonos/add", method = RequestMethod.GET)
+	public String formTelefono() {
+		return "formTelefono";
+	}
+
+	@RequestMapping(value = "/personas/telefonos/edit", method = RequestMethod.GET)
+	public String editTelefono(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("categoria", telefonoService.get(id));
+		return "formTelefono";
+	}
+
+	@RequestMapping(value = "/personas/telefonos/delete", method = RequestMethod.GET)
+	public String deleteTelefono(@RequestParam int id) {
+		telefonoService.delete(id);
+		return "redirect: /agenda/personas";
 	}
 }

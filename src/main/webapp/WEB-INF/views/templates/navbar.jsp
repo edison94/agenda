@@ -11,15 +11,15 @@
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item"><a class="nav-link" href="/agenda">Inicio</a></li>
-			<li class="nav-item"><a class="nav-link" href="personas">Personas</a></li>
-			<li class="nav-item"><a class="nav-link" href="empleados">Empleados</a></li>
+			<li class="nav-item"><a class="nav-link" href="/agenda/personas">Personas</a></li>
+			<li class="nav-item"><a class="nav-link" href="/agenda/empleados">Empleados</a></li>
 
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false">Back Office</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="categorias">Categorías</a> <a
-						class="dropdown-item" href="departamentos">Departamentos</a>
+					<a class="dropdown-item" href="/agenda/categorias">Categorías</a>
+					<a class="dropdown-item" href="/agenda/departamentos">Departamentos</a>
 				</div></li>
 		</ul>
 

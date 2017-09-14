@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
@@ -15,9 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import spring.model.Categoria;
 import spring.model.Empleado;
 import spring.model.Persona;
+import spring.model.Telefono;
 
 @Repository
 public class SearchDAOImpl implements ISearchDAO {
@@ -33,14 +34,56 @@ public class SearchDAOImpl implements ISearchDAO {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
 		Root<Persona> root = query.from(Persona.class);
+		Predicate like = builder.or(
+				builder.like(root.<String>get("nombre"), "%"+nombre+"%"),
+				builder.like(root.<String>get("apellido1"), "%"+nombre+"%"),
+				builder.like(root.<String>get("apellido2"), "%"+nombre+"%")
+				);
 		query.select(root);
+		query.where(like);
 		Query<Persona> q = session.createQuery(query);
-		List<Persona> personas = q.getResultList();
-		
-		System.out.println("No ha petado");
-		System.out.println(personas);
-		return personas;
+		return q.getResultList();
 	}
+	
+	
+
+	@Transactional
+	public List<Persona> searchPersonasByTelefono(String telefono) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
+		Root<Persona> root = query.from(Persona.class);
+		Join<Persona,Telefono> join = root.join("telefonos");
+	
+		Predicate like = builder.like( join.<String>get("telefono"),"%"+telefono+"%" );
+		query.select(root);
+		query.where(like);
+		Query<Persona> q = session.createQuery(query);
+		return q.getResultList();
+	}
+
+	@Transactional
+	public List<Persona> searchPersonasByDireccion(String direccion) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
+		Root<Persona> root = query.from(Persona.class);
+		Join<Persona,Telefono> join = root.join("direccion");
+		
+		Predicate like = builder.or(
+				builder.like( join.<String>get("direccion"),"%"+direccion+"%" ),
+				builder.like( join.<String>get("codPostal"),"%"+direccion+"%" ),
+				builder.like( join.<String>get("localidad"),"%"+direccion+"%" ),
+				builder.like( join.<String>get("provincia"),"%"+direccion+"%" )
+				
+			);
+		query.select(root);
+		query.where(like);
+		Query<Persona> q = session.createQuery(query);
+		return q.getResultList();
+	}
+
+
 
 	@Transactional
 	public List<Empleado> searchEmpleadosByDepartamento(String departamento) {

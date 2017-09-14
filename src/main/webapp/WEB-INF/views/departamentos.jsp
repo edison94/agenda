@@ -34,14 +34,14 @@
 						<thead class="table-info">
 							<tr>
 								<th>Nombre</th>
-								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${departamentos}" var="departamento">
 								<tr>
-									<th>${departamento.nombre}</th>
-									<td data-page="departamentos"><a
+									<th>${departamento.nombre}</th>	
+									<td data-page="departamentos" class="text-right"><a
 										href="departamentos/edit?id=${departamento.iddepartamento}"
 										class="btn btn-warning">Editar</a>
 										<button class="btn btn-danger eliminar" >Eliminar</button>

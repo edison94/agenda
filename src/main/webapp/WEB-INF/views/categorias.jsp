@@ -5,20 +5,20 @@
 <html lang="es">
 <head>
 	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de categorias</title>
+	<title>Listado de categorías</title>
 </head>
 <body>
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
 	<div class="container">
-		<h2>Listado de categorias</h2>
+		<h2>Listado de categorías</h2>
 		<c:choose>
 			<c:when test="${empty categorias}">
 				<section class="jumbotron text-center">
 					<div class="container">
-						<h1 class="jumbotron-heading">No hay categorias</h1>
+						<h1 class="jumbotron-heading">No hay categorías</h1>
 						<p>
 							<a href="categorias/add" class="btn btn-success">Añadir
-								categoria</a>
+								categoría</a>
 						</p>
 					</div>
 				</section>
@@ -27,14 +27,14 @@
 				<div class="row">
 					<p>
 						<a href="categorias/add" class="btn btn-success">Añadir
-							categoria</a>
+							categoría</a>
 					</p>
 					<table class="table table-hover">
 						<thead class="table-info">
 							<tr>
 								<th>Nombre</th>
 								<th>Descripción</th>
-								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,11 +42,11 @@
 								<tr>
 									<th>${categoria.nombre}</th>
 									<th>${categoria.descripcion}</th>
-									<td data-page="categorias" ><a href="categorias/edit?id=${categoria.idcategorias}"
+									<td data-page="categorias" class="text-right" ><a href="categorias/edit?id=${categoria.idcategorias}"
 										class="btn btn-warning">Editar</a>
 										<button class="btn btn-danger eliminar" >Eliminar</button>
 										<input type="hidden" value="${ categoria.idcategorias }">
-										</td>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
