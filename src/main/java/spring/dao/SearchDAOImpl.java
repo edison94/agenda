@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import spring.model.Categoria;
+import spring.model.Empleado;
 import spring.model.Persona;
 
 @Repository
@@ -38,6 +40,21 @@ public class SearchDAOImpl implements ISearchDAO {
 		System.out.println("No ha petado");
 		System.out.println(personas);
 		return personas;
+	}
+
+	@Transactional
+	public List<Empleado> searchEmpleadosByDepartamento(String departamento) {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
+		Root<Empleado> root = query.from(Empleado.class);
+		Predicate like = builder.and(
+			    builder.like( root.get("departamentos").<String>get("nombre"),"%"+departamento+"%" )
+			);
+		query.select(root);
+		query.where(like);
+		Query<Empleado> q = session.createQuery(query);
+		return q.getResultList();
 	}
 	
 	

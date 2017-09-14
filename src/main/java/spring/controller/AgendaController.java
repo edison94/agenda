@@ -245,4 +245,10 @@ public class AgendaController {
 		empleadoService.delete(id);
 		return "redirect: /agenda/empleados";
 	}
+	
+	@RequestMapping(value = "/empleados/dept", method = RequestMethod.GET)
+	public String findByDept(ModelMap model) {
+		model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento("r"));
+		return "empleados";
+	}
 }
