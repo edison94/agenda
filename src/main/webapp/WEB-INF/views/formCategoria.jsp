@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Formulario de categoría</title>
+<jsp:include page="templates/head.jsp"></jsp:include>
+<title>Formulario de categoría</title>
 </head>
 <body>
 	<div class="container">
@@ -19,23 +19,28 @@
 			<form:hidden path="idcategorias" />
 			<div class="form-group">
 				<form:label path="nombre">Nombre</form:label>
-				:
 				<form:input path="nombre" class="form-control"
-					placeholder="Nombre de la categoria" />
+					readonly="${readonly}" placeholder="Nombre de la categoria" />
 				<div class="has-error">
 					<form:errors path="nombre" class="form-control-feedback" />
 				</div>
 			</div>
 			<div class="form-group">
 				<form:label path="descripcion">Descripción</form:label>
-				:
 				<form:input path="descripcion" class="form-control"
-					placeholder="Descripción de la categoria" />
+					readonly="${readonly}" placeholder="Descripción de la categoria" />
 				<div class="has-error">
 					<form:errors path="descripcion" class="help-inline" />
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<c:choose>
+				<c:when test="${readonly == 'true'}">
+					<a class="btn btn-primary" href="/agenda/categorias">Volver</a>
+				</c:when>
+				<c:otherwise>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</c:otherwise>
+			</c:choose>
 		</form:form>
 	</div>
 </body>

@@ -18,14 +18,20 @@
 			<form:hidden path="iddepartamento" />
 			<div class="form-group">
 				<form:label path="nombre">Nombre</form:label>
-				:
 				<form:input path="nombre" class="form-control"
-					placeholder="Nombre del departamento" />
+					readonly="${readonly}" placeholder="Nombre del departamento" />
 				<div class="has-error">
 					<form:errors path="nombre" class="form-control-feedback" />
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<c:choose>
+				<c:when test="${readonly == 'true'}">
+					<a class="btn btn-primary" href="/agenda/departamentos">Volver</a>
+				</c:when>
+				<c:otherwise>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</c:otherwise>
+			</c:choose>
 		</form:form>
 	</div>
 

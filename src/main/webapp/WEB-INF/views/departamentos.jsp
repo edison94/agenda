@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de departamentos</title>
+<jsp:include page="templates/head.jsp"></jsp:include>
+<title>Listado de departamentos</title>
 </head>
 <body>
 	<div class="container">
@@ -40,12 +40,14 @@
 						<tbody>
 							<c:forEach items="${departamentos}" var="departamento">
 								<tr>
-									<th>${departamento.nombre}</th>	
+									<th>${departamento.nombre}</th>
 									<td data-page="departamentos" class="text-right"><a
+										href="departamentos/get?id=${departamento.iddepartamento}"
+										class="btn btn-primary">Detalle</a> <a
 										href="departamentos/edit?id=${departamento.iddepartamento}"
 										class="btn btn-warning">Editar</a>
-										<button class="btn btn-danger eliminar" >Eliminar</button>
-										<input type="hidden" value="${ departamento.iddepartamento }">
+										<button class="btn btn-danger eliminar">Eliminar</button> <input
+										type="hidden" value="${ departamento.iddepartamento }">
 									</td>
 								</tr>
 							</c:forEach>
