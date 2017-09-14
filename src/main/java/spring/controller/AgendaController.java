@@ -246,6 +246,13 @@ public class AgendaController {
 	public String getListadoEmpleados() {
 		return "empleados";
 	}
+	
+	@RequestMapping(value = "/empleados/get", method = RequestMethod.GET)
+	public String getEmpleado(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("empleado", empleadoService.get(id));
+		map.addAttribute("readonly", "true");
+		return "formEmpleado";
+	}
 
 	@RequestMapping(value = "/empleados/add", method = RequestMethod.GET)
 	public String formEmpleado() {
