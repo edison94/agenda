@@ -14,8 +14,6 @@ public interface IEmpleadoDAO {
 	public List<Empleado> list();
 
 	public Empleado get(int id);
-
-	
 }
 
 

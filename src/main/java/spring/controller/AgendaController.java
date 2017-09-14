@@ -105,8 +105,9 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
-		System.out.println("entra 0001");
-		searchService.searchPersonasByNombre("hola");
+		System.out.println("entra controller");
+		searchService.searchPersonasByNombre("chez");
+		System.out.println("sale controller");
 		return new ModelAndView("home");
 	}
 
@@ -256,5 +257,11 @@ public class AgendaController {
 	public String deleteEmpleado(@RequestParam("id") int id) {
 		empleadoService.delete(id);
 		return "redirect: /agenda/empleados";
+	}
+	
+	@RequestMapping(value = "/empleados/dept", method = RequestMethod.GET)
+	public String findByDept(ModelMap model) {
+		model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento("r"));
+		return "empleados";
 	}
 }
