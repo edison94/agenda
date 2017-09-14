@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de personas</title>
+<jsp:include page="templates/head.jsp"></jsp:include>
+<title>Listado de personas</title>
 </head>
 <body>
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
@@ -43,13 +43,17 @@
 							<c:forEach items="${personas}" var="persona">
 								<tr>
 									<td>${persona.nombre}</td>
-									<td>${persona.apellido1} ${persona.apellido2}</td>
+									<td>${persona.apellido1}${persona.apellido2}</td>
 									<td>${persona.dni}</td>
-									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${persona.fechaNacimiento}" /></td>
-									<td class="text-right" data-page="personas" ><a href="persona/edit?id=${persona.idpersonas}"
-										class="btn btn-warning">Editar</a>
-										<button class="btn btn-danger eliminar" >Eliminar</button>
-										<input type="hidden" value="${ persona.idpersonas }">
+									<td><fmt:formatDate pattern="dd/MM/yyyy"
+											value="${persona.fechaNacimiento}" /></td>
+									<td class="text-right" data-page="personas"><a
+										href="persona/edit?id=${persona.idpersonas}"
+										class="btn btn-warning"><i class="fa fa-pencil-square-o"
+											aria-hidden="true"></i> </a>
+										<button class="btn btn-danger eliminar">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button> <input type="hidden" value="${ persona.idpersonas }">
 									</td>
 								</tr>
 							</c:forEach>

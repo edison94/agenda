@@ -43,11 +43,14 @@
 									<th>${departamento.nombre}</th>
 									<td data-page="departamentos" class="text-right"><a
 										href="departamentos/get?id=${departamento.iddepartamento}"
-										class="btn btn-primary">Detalle</a> <a
+										class="btn btn-primary"><i class="fa fa-list"
+											aria-hidden="true"></i></a> <a
 										href="departamentos/edit?id=${departamento.iddepartamento}"
-										class="btn btn-warning">Editar</a>
-										<button class="btn btn-danger eliminar">Eliminar</button> <input
-										type="hidden" value="${ departamento.iddepartamento }">
+										class="btn btn-warning"><i class="fa fa-pencil-square-o"
+											aria-hidden="true"></i> </a>
+										<button class="btn btn-danger eliminar">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button> <input type="hidden" value="${ departamento.iddepartamento }">
 									</td>
 								</tr>
 							</c:forEach>

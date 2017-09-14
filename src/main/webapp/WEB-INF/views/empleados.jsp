@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de empleados</title>
+<jsp:include page="templates/head.jsp"></jsp:include>
+<title>Listado de empleados</title>
 </head>
 <body>
 	<div class="container">
@@ -47,14 +47,21 @@
 								<tr>
 									<td>${empleado.codEmpleado}</td>
 									<td>${empleado.personas.nombre}</td>
-									<td>${empleado.personas.apellido1} ${empleado.personas.apellido2}</td>
+									<td>${empleado.personas.apellido1}
+										${empleado.personas.apellido2}</td>
 									<td>${empleado.salario}</td>
-									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${empleado.fechaAlta}" /></td>
-									<td class="text-right"><a href="empleados/get?id=${empleado.idempleados}"
-										class="btn btn-primary">Detalle</a> <a href="empleados/edit?id=${empleado.idempleados}"
-										class="btn btn-warning">Editar</a> <a
+									<td><fmt:formatDate pattern="dd/MM/yyyy"
+											value="${empleado.fechaAlta}" /></td>
+									<td class="text-right"><a
+										href="empleados/get?id=${empleado.idempleados}"
+										class="btn btn-primary"><i class="fa fa-list"
+											aria-hidden="true"></i></a> <a
+										href="empleados/edit?id=${empleado.idempleados}"
+										class="btn btn-warning"><i class="fa fa-pencil-square-o"
+											aria-hidden="true"></i></a> <a
 										href="empleados/delete?id=${empleado.idempleados}"
-										class="btn btn-danger">Eliminar</a></td>
+										class="btn btn-danger"><i class="fa fa-trash"
+											aria-hidden="true"></i> </a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
