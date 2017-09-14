@@ -27,7 +27,6 @@ import spring.model.Direccion;
 import spring.model.Empleado;
 import spring.model.Persona;
 import spring.model.Telefono;
-import spring.viewresolver.JsonViewResolver;
  
 @EnableWebMvc
 @Configuration
@@ -47,16 +46,9 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
 		// Define all possible view resolvers
 		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-
-		resolvers.add(jsonViewResolver());
 		resolvers.add(jspViewResolver());
 		resolver.setViewResolvers(resolvers);
 		return resolver;
-	}
-	
-	@Bean
-	public ViewResolver jsonViewResolver() {
-		return new JsonViewResolver();
 	}
 	
 	@Bean
