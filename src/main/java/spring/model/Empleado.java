@@ -31,6 +31,7 @@ public class Empleado implements Serializable {
 	private Persona personas;
 	private String codEmpleado;
 	private String salario;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaAlta;
 
 	public Empleado() {

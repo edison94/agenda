@@ -20,8 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
+import spring.model.Direccion;
 import spring.model.Empleado;
 import spring.model.Persona;
+import spring.model.Telefono;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 import spring.service.IEmpleadoService;
@@ -66,6 +68,16 @@ public class AgendaController {
 	@ModelAttribute("empleado")
 	public Empleado getEmpleadoObjectNew() {
 		return new Empleado();
+	}
+	
+	@ModelAttribute("telefono")
+	public Telefono getTelefonoObjectNew() {
+		return new Telefono();
+	}
+	
+	@ModelAttribute("direccion")
+	public Direccion getDireccionObjectNew() {
+		return new Direccion();
 	}
 
 	@ModelAttribute("categorias")
