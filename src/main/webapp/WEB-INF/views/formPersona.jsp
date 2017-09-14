@@ -52,6 +52,34 @@
 				</div>
 			</div>
 			
+			<div class="form-group">
+
+				<label>Teléfonos: <a class="btn btn-primary"
+					href="/agenda/telefonos/add?idpersonas=${persona.idpersonas}"
+					role="button">Añadir</a>
+				</label>
+				<c:if test="${not empty persona.idpersonas}">
+					<c:choose>
+						<c:when test="${empty persona.telefonos}">
+							<p>Aún no se añadió ningun teléfono</p>
+						</c:when>
+						<c:otherwise>
+							<ul class="list-group">
+								<c:forEach items="${persona.telefonos}" var="telefono">
+									<li class="list-group-item justify-content-between">${telefono.telefono}<span><a
+											class="btn btn-warning"
+											href="/agenda/telefonos/edit?id=${telefono.idtelefonos}"
+											role="button">Modificar</a> <a class="btn btn-danger"
+											href="/agenda/telefonos/delete?id=${telefono.idtelefonos}"
+											role="button">Eliminar</a></span>
+									</li>
+								</c:forEach>
+							</ul>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
+			</div>
+			
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form:form>
 	</div>
