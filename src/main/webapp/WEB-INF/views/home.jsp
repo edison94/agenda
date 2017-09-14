@@ -13,25 +13,29 @@
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
 	<div class="container">
 		<ul class="list-group">
-			<li class="list-group-item justify-content-between">Personas<span
-				class="badge badge-pill badge-primary text-center">0</span><a
-				class="btn btn-primary" href="personas"
-				role="button">Ir a lista <i class="fa fa-external-link"></i></a>
+			<li class="list-group-item row">
+			<span class="col-4 text-left">Personas</span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-right"><a class="btn btn-primary" href="personas"
+				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
-			<li class="list-group-item justify-content-between">Empleados<span
-				class="badge badge-pill badge-primary text-center">0</span><a
-				class="btn btn-primary" href="empleados"
-				role="button">Ir a lista <i class="fa fa-external-link"></i></a>
+			<li class="list-group-item row">
+			<span class="col-4 text-left">Empleados</span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-right"><a class="btn btn-primary" href="empleados"
+				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
-			<li class="list-group-item justify-content-between">Categorías<span
-				class="badge badge-pill badge-primary text-center">0</span><a
-				class="btn btn-primary" href="categorias"
-				role="button">Ir a lista <i class="fa fa-external-link"></i></a>
+			<li class="list-group-item row">
+			<span class="col-4 text-left">Categorías</span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-right"><a class="btn btn-primary" href="categorias"
+				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
-			<li class="list-group-item justify-content-between">Departamentos<span
-				class="badge badge-pill badge-primary text-center">0</span><a
-				class="btn btn-primary" href="departamentos"
-				role="button">Ir a lista <i class="fa fa-external-link"></i></a>
+			<li class="list-group-item row">
+			<span class="col-4 text-left">Departamentos</span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-right"><a class="btn btn-primary" href="departamentos"
+				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
 		</ul>
 	</div>
