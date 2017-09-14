@@ -3,6 +3,7 @@ package spring.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -106,9 +107,6 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
-		System.out.println("entra controller");
-		searchService.searchPersonasByNombre("chez");
-		System.out.println("sale controller");
 		return new ModelAndView("home");
 	}
 
@@ -248,6 +246,13 @@ public class AgendaController {
 	public String getListadoEmpleados() {
 		return "empleados";
 	}
+	
+	@RequestMapping(value = "/empleados/get", method = RequestMethod.GET)
+	public String getEmpleado(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("empleado", empleadoService.get(id));
+		map.addAttribute("readonly", "true");
+		return "formEmpleado";
+	}
 
 	@RequestMapping(value = "/empleados/add", method = RequestMethod.GET)
 	public String formEmpleado() {
@@ -309,5 +314,49 @@ public class AgendaController {
 	public String deleteTelefono(@RequestParam int id) {
 		telefonoService.delete(id);
 		return "redirect: /agenda/personas";
+	}
+	
+	/**************************************************
+	 * Busqueda
+	 **************************************************/
+	@RequestMapping(value = "/buscar", method = RequestMethod.GET)
+	public String search(@RequestParam Map<String,String> requestParams,ModelMap model) {
+		System.out.println("entra en el metodo buscar");
+		System.out.println(requestParams.get("sujeto"));
+		
+		String sujeto = requestParams.get("sujeto");
+		String criterio = requestParams.get("criterio");
+		String texto = requestParams.get("texto");
+		
+		if(sujeto.equals("empleado")){
+			if(criterio.equals("departamento")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";
+			}else if (criterio.equals("direccion")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";
+			}else if (criterio.equals("telefono")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";
+			}else if (criterio.equals("nombre")){
+				model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento(texto));
+				return "empleados";		
+			}
+			
+		}else if (sujeto.equals("persona")){
+			if(criterio.equals("direccion")){
+				model.addAttribute("personas",searchService.searchPersonasByDireccion(texto));
+				return "personas";	
+			}else if(criterio.equals("telefono")){
+				model.addAttribute("personas",searchService.searchPersonasByTelefono(texto));
+				return "personas";	
+			}else if (criterio.equals("nombre")){
+				model.addAttribute("personas",searchService.searchPersonasByNombre(texto));
+				return "personas";	
+			}
+					
+		}
+		return "redirect: /agenda";
+		
 	}
 }
