@@ -41,6 +41,7 @@ public class SearchDAOImpl implements ISearchDAO {
 				);
 		query.select(root);
 		query.where(like);
+		query.distinct(true);
 		Query<Persona> q = session.createQuery(query);
 		return q.getResultList();
 	}
@@ -56,6 +57,7 @@ public class SearchDAOImpl implements ISearchDAO {
 		Predicate like = builder.like( join.<String>get("telefono"),"%"+telefono+"%" );
 		query.select(root);
 		query.where(like);
+		query.distinct(true);
 		Query<Persona> q = session.createQuery(query);
 		return q.getResultList();
 	}
@@ -73,10 +75,10 @@ public class SearchDAOImpl implements ISearchDAO {
 				builder.like( join.<String>get("codPostal"),"%"+direccion+"%" ),
 				builder.like( join.<String>get("localidad"),"%"+direccion+"%" ),
 				builder.like( join.<String>get("provincia"),"%"+direccion+"%" )
-				
 			);
 		query.select(root);
 		query.where(like);
+		query.distinct(true);
 		Query<Persona> q = session.createQuery(query);
 		return q.getResultList();
 	}
@@ -92,6 +94,7 @@ public class SearchDAOImpl implements ISearchDAO {
 			);
 		query.select(root);
 		query.where(like);
+		query.distinct(true);
 		Query<Empleado> q = session.createQuery(query);
 		return q.getResultList();
 	}

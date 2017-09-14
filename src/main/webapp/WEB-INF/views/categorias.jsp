@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de categorías</title>
+<jsp:include page="templates/head.jsp"></jsp:include>
+<title>Listado de categorías</title>
 </head>
 <body>
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
@@ -42,11 +42,16 @@
 								<tr>
 									<th>${categoria.nombre}</th>
 									<th>${categoria.descripcion}</th>
-									<td data-page="categorias" class="text-right" ><a href="categorias/get?id=${categoria.idcategorias}"
-										class="btn btn-primary">Detalle</a> <a href="categorias/edit?id=${categoria.idcategorias}"
-										class="btn btn-warning">Editar</a>
-										<button class="btn btn-danger eliminar" >Eliminar</button>
-										<input type="hidden" value="${ categoria.idcategorias }">
+									<td data-page="categorias" class="text-right"><a
+										href="categorias/get?id=${categoria.idcategorias}"
+										class="btn btn-primary"><i class="fa fa-list"
+											aria-hidden="true"></i></a> <a
+										href="categorias/edit?id=${categoria.idcategorias}"
+										class="btn btn-warning"><i class="fa fa-pencil-square-o"
+											aria-hidden="true"></i> </a>
+										<button class="btn btn-danger eliminar">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button> <input type="hidden" value="${ categoria.idcategorias }">
 									</td>
 								</tr>
 							</c:forEach>
