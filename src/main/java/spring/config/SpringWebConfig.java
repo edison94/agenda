@@ -1,5 +1,7 @@
 package spring.config;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -11,9 +13,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import spring.model.Categoria;
@@ -22,6 +27,7 @@ import spring.model.Direccion;
 import spring.model.Empleado;
 import spring.model.Persona;
 import spring.model.Telefono;
+import spring.viewresolver.JsonViewResolver;
  
 @EnableWebMvc
 @Configuration
@@ -35,7 +41,26 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	@Bean
-	public InternalResourceViewResolver viewResolver() {
+	public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
+		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+		resolver.setContentNegotiationManager(manager);
+
+		// Define all possible view resolvers
+		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
+
+		resolvers.add(jsonViewResolver());
+		resolvers.add(jspViewResolver());
+		resolver.setViewResolvers(resolvers);
+		return resolver;
+	}
+	
+	@Bean
+	public ViewResolver jsonViewResolver() {
+		return new JsonViewResolver();
+	}
+	
+	@Bean
+	public ViewResolver jspViewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
