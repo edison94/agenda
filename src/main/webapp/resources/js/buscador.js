@@ -37,4 +37,4 @@ function cargarOpciones() {
 
 var persona = {"direccion": "Dirección", "nombre": "Nombre", "telefono": "Teléfono"};
 var empleado = {"categoria": "Categoría", "departamento": "Departamento","direccion": "Dirección", "nombre": "Nombre", "telefono": "Teléfono"};
-var opciones = [persona,empleado];
+var opciones = [empleado,persona];
