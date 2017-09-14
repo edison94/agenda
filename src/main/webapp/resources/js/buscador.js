@@ -5,9 +5,17 @@ $( document ).ready(function() {
 function cargarOpciones() { 
 	var op = $(this).val() == "empleado"?0:1;
 	  var ops = opciones[op];
-	  $("select#criterio").find("option").remove();
+	  var select = $("select#criterio");
+	  select.find("option").remove();
 	  ops.forEach(function(item){
-		  $("<option>").val(item).html(item).appendTo($("select#criterio"));
+		  $("<option>").val(item).html(item).appendTo(select);
+	  });
+	  
+	  select.change(function(){
+		  $.get('departamentos.json', function(responseJson) {
+			  console.log("cambio");
+              console.log(responseJson);
+          });
 	  });
 }
 
