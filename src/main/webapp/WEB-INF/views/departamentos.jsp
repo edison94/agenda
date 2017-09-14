@@ -41,11 +41,12 @@
 							<c:forEach items="${departamentos}" var="departamento">
 								<tr>
 									<th>${departamento.nombre}</th>
-									<td><a
+									<td data-page="departamentos"><a
 										href="departamentos/edit?id=${departamento.iddepartamento}"
-										class="btn btn-warning">Editar</a> <a
-										href="departamentos/delete?id=${departamento.iddepartamento}"
-										class="btn btn-danger">Eliminar</a></td>
+										class="btn btn-warning">Editar</a>
+										<button class="btn btn-danger eliminar" >Eliminar</button>
+										<input type="hidden" value="${ departamento.iddepartamento }">
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

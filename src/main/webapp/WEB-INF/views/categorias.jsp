@@ -42,10 +42,11 @@
 								<tr>
 									<th>${categoria.nombre}</th>
 									<th>${categoria.descripcion}</th>
-									<td><a href="categorias/edit?id=${categoria.idcategorias}"
-										class="btn btn-warning">Editar</a> <a
-										href="categorias/delete?id=${categoria.idcategorias}"
-										class="btn btn-danger">Eliminar</a></td>
+									<td data-page="categorias" ><a href="categorias/edit?id=${categoria.idcategorias}"
+										class="btn btn-warning">Editar</a>
+										<button class="btn btn-danger eliminar" >Eliminar</button>
+										<input type="hidden" value="${ categoria.idcategorias }">
+										</td>
 								</tr>
 							</c:forEach>
 						</tbody>

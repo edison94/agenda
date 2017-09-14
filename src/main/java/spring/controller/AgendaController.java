@@ -1,22 +1,19 @@
 package spring.controller;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
-
 import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
@@ -127,10 +124,16 @@ public class AgendaController {
 		return "formCategoria";
 	}
 
-	@RequestMapping(value = "/categorias/delete", method = RequestMethod.GET)
-	public String deleteCategoria(@RequestParam int id) {
-		categoriaService.deleteCategoria(id);
-		return "redirect: /agenda/categorias";
+	@RequestMapping(value = "/categorias/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> deleteCategoria(@RequestParam int id) {
+		Map<String,String> errorMap = new HashMap<String,String>();
+		try {
+			categoriaService.deleteCategoria(id);
+		} catch (Exception e) {
+			errorMap.put("error", "No se ha podido borrar la categoría.");
+		}
+		return errorMap;
 	}
 
 	/**************************************************
@@ -162,10 +165,16 @@ public class AgendaController {
 		return "formPersona";
 	}
 
-	@RequestMapping(value = "/personas/delete", method = RequestMethod.GET)
-	public String deletePersona(@RequestParam int id) {
-		personaService.deletePersona(id);
-		return "redirect: /agenda/personas";
+	@RequestMapping(value = "/personas/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> deletePersona(@RequestParam int id) {
+		Map<String,String> errorMap = new HashMap<String,String>();
+		try {
+			personaService.deletePersona(id);
+		} catch (Exception e) {
+			errorMap.put("error", "No se ha podido borrar la persona.");
+		}
+		return errorMap;
 	}
 
 	/**************************************************
@@ -195,21 +204,17 @@ public class AgendaController {
 		map.addAttribute("departamento", departamentoService.get(id));
 		return "formDepartamento";
 	}
-
-	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.GET)
-	public String deleteDepartamento(@RequestParam("id") int id) throws AgendaException {
+	
+	@RequestMapping(value = "/departamentos/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> deleteDepartamento(@RequestParam("id") int id) {
+		Map<String,String> errorMap = new HashMap<String,String>();
 		try {
 			departamentoService.delete(id);
 		} catch (Exception e) {
-			throw new AgendaException("redirect: /agenda/departamentos", "No se puede borrar");
+			errorMap.put("error", "No se ha podido borrar el departamento.");
 		}
-		return "redirect: /agenda/departamentos";
-	}
-
-	@ResponseStatus(value = HttpStatus.CONFLICT, reason = "Data integrity violation")
-	@ExceptionHandler(AgendaException.class)
-	public void handleCustomException() {
-		// esto se haria mejor con ajax
+		return errorMap;
 	}
 
 	/**************************************************
@@ -239,16 +244,16 @@ public class AgendaController {
 		empleadoService.saveOrUpdate(empleado);
 		return "redirect: /agenda/empleados";
 	}
-
-	@RequestMapping(value = "/empleados/delete", method = RequestMethod.GET)
-	public String deleteEmpleado(@RequestParam("id") int id) {
-		empleadoService.delete(id);
-		return "redirect: /agenda/empleados";
-	}
 	
-	@RequestMapping(value = "/empleados/dept", method = RequestMethod.GET)
-	public String findByDept(ModelMap model) {
-		model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento("r"));
-		return "empleados";
+	@RequestMapping(value = "/empleados/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> deleteEmpleado(@RequestParam("id") int id) {
+		Map<String,String> errorMap = new HashMap<String,String>();
+		try {
+			empleadoService.delete(id);
+		} catch (Exception e) {
+			errorMap.put("error", "No se ha podido borrar el empleado.");
+		}
+		return errorMap;
 	}
 }

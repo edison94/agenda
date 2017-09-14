@@ -46,10 +46,11 @@
 									<td>${persona.apellido1} ${persona.apellido2}</td>
 									<td>${persona.dni}</td>
 									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${persona.fechaNacimiento}" /></td>
-									<td><a href="persona/edit?id=${persona.idpersonas}"
-										class="btn btn-warning">Editar</a> <a
-										href="persona/delete?id=${persona.idpersonas}"
-										class="btn btn-danger">Eliminar</a></td>
+									<td data-page="personas" ><a href="persona/edit?id=${persona.idpersonas}"
+										class="btn btn-warning">Editar</a>
+										<button class="btn btn-danger eliminar" >Eliminar</button>
+										<input type="hidden" value="${ persona.idpersonas }">
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

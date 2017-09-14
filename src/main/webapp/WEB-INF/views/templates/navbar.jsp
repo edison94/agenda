@@ -18,8 +18,8 @@
 				class="nav-link dropdown-toggle" href="" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false">Back Office</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="categorias">Categorías</a>
-					<a class="dropdown-item" href="departamentos">Departamentos</a>
+					<a class="dropdown-item" href="categorias">Categorías</a> <a
+						class="dropdown-item" href="departamentos">Departamentos</a>
 				</div></li>
 		</ul>
 
@@ -39,3 +39,22 @@
 		</form>
 	</div>
 </nav>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Error</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>
