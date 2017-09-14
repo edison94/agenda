@@ -50,7 +50,8 @@
 									<td>${empleado.personas.apellido1} ${empleado.personas.apellido2}</td>
 									<td>${empleado.salario}</td>
 									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${empleado.fechaAlta}" /></td>
-									<td class="text-right"><a href="empleados/edit?id=${empleado.idempleados}"
+									<td class="text-right"><a href="empleados/get?id=${empleado.idempleados}"
+										class="btn btn-primary">Detalle</a> <a href="empleados/edit?id=${empleado.idempleados}"
 										class="btn btn-warning">Editar</a> <a
 										href="empleados/delete?id=${empleado.idempleados}"
 										class="btn btn-danger">Eliminar</a></td>
