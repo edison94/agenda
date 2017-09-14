@@ -4,7 +4,10 @@
 <meta name="author" content="Lucatic-Grupo1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estilo.css" />">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-datepicker.standalone.min.css" />">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" defer></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" defer></script>
-<script src="<c:url value="/resources/js/buscador.js" />"></script>
+<script src="<c:url value="/resources/js/buscador.js" />" defer></script>
+<script src="<c:url value="/resources/js/bootstrap-datepicker.js" />" defer></script>
+<script src="<c:url value="/resources/locales/bootstrap-datepicker.es.min.js" />" defer></script>

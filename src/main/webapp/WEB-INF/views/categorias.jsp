@@ -5,20 +5,20 @@
 <html lang="es">
 <head>
 	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Listado de categorias</title>
+	<title>Listado de categorías</title>
 </head>
 <body>
 	<jsp:include page="templates/navbar.jsp"></jsp:include>
 	<div class="container">
-		<h2>Listado de categorias</h2>
+		<h2>Listado de categorías</h2>
 		<c:choose>
 			<c:when test="${empty categorias}">
 				<section class="jumbotron text-center">
 					<div class="container">
-						<h1 class="jumbotron-heading">No hay categorias</h1>
+						<h1 class="jumbotron-heading">No hay categorías</h1>
 						<p>
 							<a href="categorias/add" class="btn btn-success">Añadir
-								categoria</a>
+								categoría</a>
 						</p>
 					</div>
 				</section>
@@ -27,7 +27,7 @@
 				<div class="row">
 					<p>
 						<a href="categorias/add" class="btn btn-success">Añadir
-							categoria</a>
+							categoría</a>
 					</p>
 					<table class="table table-hover">
 						<thead class="table-info">

@@ -20,13 +20,16 @@ import org.springframework.web.servlet.ModelAndView;
 import spring.exception.AgendaException;
 import spring.model.Categoria;
 import spring.model.Departamento;
+import spring.model.Direccion;
 import spring.model.Empleado;
 import spring.model.Persona;
+import spring.model.Telefono;
 import spring.service.ICategoriaService;
 import spring.service.IDepartamentoService;
 import spring.service.IEmpleadoService;
 import spring.service.IPersonaService;
 import spring.service.ISearchService;
+import spring.service.ITelefonoService;
 
 @Controller
 public class AgendaController {
@@ -41,6 +44,9 @@ public class AgendaController {
 
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private ITelefonoService telefonoService;
 
 	@Autowired
 	private ISearchService searchService;
@@ -66,6 +72,16 @@ public class AgendaController {
 	@ModelAttribute("empleado")
 	public Empleado getEmpleadoObjectNew() {
 		return new Empleado();
+	}
+	
+	@ModelAttribute("telefono")
+	public Telefono getTelefonoObjectNew() {
+		return new Telefono();
+	}
+	
+	@ModelAttribute("direccion")
+	public Direccion getDireccionObjectNew() {
+		return new Direccion();
 	}
 
 	@ModelAttribute("categorias")
@@ -251,5 +267,35 @@ public class AgendaController {
 	public String findByDept(ModelMap model) {
 		model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento("r"));
 		return "empleados";
+	}
+	
+	/**************************************************
+	 * Telefono
+	 **************************************************/
+	
+	@RequestMapping(value = { "/telefonos/add", "/telefonos/edit" }, method = RequestMethod.POST)
+	public String saveTelefono(@Valid Telefono telefono, BindingResult result) {
+		if (result.hasErrors()) {
+			return "formCategoria";
+		}
+		telefonoService.saveOrUpdate(telefono);
+		return "redirect: /agenda/categorias";
+	}
+
+	@RequestMapping(value = "/telefonos/add", method = RequestMethod.GET)
+	public String formTelefono() {
+		return "formCategoria";
+	}
+
+	@RequestMapping(value = "/telefonos/edit", method = RequestMethod.GET)
+	public String editTelefono(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("categoria", categoriaService.getCategoria(id));
+		return "formCategoria";
+	}
+
+	@RequestMapping(value = "/telefonos/delete", method = RequestMethod.GET)
+	public String deleteTelefono(@RequestParam int id) {
+		categoriaService.deleteCategoria(id);
+		return "redirect: /agenda/categorias";
 	}
 }

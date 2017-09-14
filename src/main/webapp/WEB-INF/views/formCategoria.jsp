@@ -7,12 +7,12 @@
 <html lang="es">
 <head>
 	<jsp:include page="templates/head.jsp"></jsp:include>
-	<title>Formulario de categoria</title>
+	<title>Formulario de categoría</title>
 </head>
 <body>
 	<div class="container">
 		<jsp:include page="templates/navbar.jsp"></jsp:include>
-		<h2>Formulario de categoria</h2>
+		<h2>Formulario de categoría</h2>
 
 		<form:form method="post" modelAttribute="categoria"
 			accept-charset="UTF-8">
