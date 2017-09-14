@@ -34,7 +34,7 @@
 							<tr>
 								<th>Nombre</th>
 								<th>Descripción</th>
-								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,7 +42,7 @@
 								<tr>
 									<th>${categoria.nombre}</th>
 									<th>${categoria.descripcion}</th>
-									<td><a href="categorias/edit?id=${categoria.idcategorias}"
+									<td class="text-right"><a href="categorias/edit?id=${categoria.idcategorias}"
 										class="btn btn-warning">Editar</a> <a
 										href="categorias/delete?id=${categoria.idcategorias}"
 										class="btn btn-danger">Eliminar</a></td>

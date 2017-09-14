@@ -103,4 +103,18 @@ public class Direccion implements Serializable {
 		this.provincia = provincia;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(direccion);
+		builder.append(", ");
+		builder.append(localidad);
+		builder.append(", ");
+		builder.append(provincia);
+		builder.append(" (");
+		builder.append(codPostal);
+		builder.append(")");
+		return builder.toString();
+	}
+
 }

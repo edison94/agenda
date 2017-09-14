@@ -46,7 +46,8 @@
 									<td>${persona.apellido1} ${persona.apellido2}</td>
 									<td>${persona.dni}</td>
 									<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${persona.fechaNacimiento}" /></td>
-									<td><a href="personas/edit?id=${persona.idpersonas}"
+									<td class="text-right"><a href="personas/get?id=${persona.idpersonas}"
+										class="btn btn-primary">Detalle</a> <a href="personas/edit?id=${persona.idpersonas}"
 										class="btn btn-warning">Editar</a> <a
 										href="personas/delete?id=${persona.idpersonas}"
 										class="btn btn-danger">Eliminar</a></td>

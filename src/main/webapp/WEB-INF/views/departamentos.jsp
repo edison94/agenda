@@ -34,14 +34,14 @@
 						<thead class="table-info">
 							<tr>
 								<th>Nombre</th>
-								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${departamentos}" var="departamento">
 								<tr>
 									<th>${departamento.nombre}</th>
-									<td><a
+									<td class="text-right"><a
 										href="departamentos/edit?id=${departamento.iddepartamento}"
 										class="btn btn-warning">Editar</a> <a
 										href="departamentos/delete?id=${departamento.iddepartamento}"

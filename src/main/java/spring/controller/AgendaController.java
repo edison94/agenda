@@ -158,6 +158,13 @@ public class AgendaController {
 	public String getListadoPersonas() {
 		return "personas";
 	}
+	
+	@RequestMapping(value = "/personas/get", method = RequestMethod.GET)
+	public String getPersona(@RequestParam("id") int id, ModelMap map) {
+		map.addAttribute("persona", personaService.getPersona(id));
+		map.addAttribute("readonly", "true");
+		return "formPersona";
+	}
 
 	@RequestMapping(value = { "/personas/add", "/personas/edit" }, method = RequestMethod.POST)
 	public String savePersona(@Valid Persona persona, BindingResult result) {
@@ -273,29 +280,29 @@ public class AgendaController {
 	 * Telefono
 	 **************************************************/
 	
-	@RequestMapping(value = { "/telefonos/add", "/telefonos/edit" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/personas/telefonos/add", "/personas/telefonos/edit" }, method = RequestMethod.POST)
 	public String saveTelefono(@Valid Telefono telefono, BindingResult result) {
 		if (result.hasErrors()) {
-			return "formCategoria";
+			return "formTelefono";
 		}
 		telefonoService.saveOrUpdate(telefono);
 		return "redirect: /agenda/categorias";
 	}
 
-	@RequestMapping(value = "/telefonos/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/personas/telefonos/add", method = RequestMethod.GET)
 	public String formTelefono() {
-		return "formCategoria";
+		return "formTelefono";
 	}
 
-	@RequestMapping(value = "/telefonos/edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/personas/telefonos/edit", method = RequestMethod.GET)
 	public String editTelefono(@RequestParam("id") int id, ModelMap map) {
-		map.addAttribute("categoria", categoriaService.getCategoria(id));
-		return "formCategoria";
+		map.addAttribute("categoria", telefonoService.get(id));
+		return "formTelefono";
 	}
 
-	@RequestMapping(value = "/telefonos/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/personas/telefonos/delete", method = RequestMethod.GET)
 	public String deleteTelefono(@RequestParam int id) {
-		categoriaService.deleteCategoria(id);
-		return "redirect: /agenda/categorias";
+		telefonoService.delete(id);
+		return "redirect: /agenda/personas";
 	}
 }
