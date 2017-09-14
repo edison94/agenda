@@ -97,6 +97,56 @@
 				</div>
 			</div>
 			
+			<div class="form-group">
+				<label>Teléfonos: <a class="btn btn-primary invisible"
+					href="telefonos/add?idpersonas=${empleado.personas.idpersonas}"
+					role="button">Añadir</a>
+				</label>
+					<c:choose>
+						<c:when test="${empty empleado.personas.telefonos}">
+							<p>Aún no se añadió ningun teléfono</p>
+						</c:when>
+						<c:otherwise>
+							<ul class="list-group">
+								<c:forEach items="${empleado.personas.telefonos}" var="telefono">
+									<li class="list-group-item justify-content-between">${telefono.telefono}<span class="invisible"><a
+											class="btn btn-warning"
+											href="telefonos/edit?id=${telefono.idtelefonos}"
+											role="button">Modificar</a> <a class="btn btn-danger"
+											href="telefonos/delete?id=${telefono.idtelefonos}"
+											role="button">Eliminar</a></span>
+									</li>
+								</c:forEach>
+							</ul>
+						</c:otherwise>
+					</c:choose>
+			</div>
+			
+			<div class="form-group">
+				<label>Direcciones: <a class="btn btn-primary invisible"
+					href="direccion/add?idpersonas=${empleado.personas.idpersonas}"
+					role="button">Añadir</a>
+				</label>
+					<c:choose>
+						<c:when test="${empty empleado.personas.direccion}">
+							<p>Aún no se añadió ningun teléfono</p>
+						</c:when>
+						<c:otherwise>
+							<ul class="list-group">
+								<c:forEach items="${empleado.personas.direccion}" var="direccion">
+									<li class="list-group-item justify-content-between">${direccion}<span class="invisible"><a
+											class="btn btn-warning"
+											href="direccion/edit?id=${direccion.iddirecciones}"
+											role="button">Modificar</a> <a class="btn btn-danger"
+											href="direccion/delete?id=${direccion.iddirecciones}"
+											role="button">Eliminar</a></span>
+									</li>
+								</c:forEach>
+							</ul>
+						</c:otherwise>
+					</c:choose>
+			</div>
+			
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form:form>
 	</div>
