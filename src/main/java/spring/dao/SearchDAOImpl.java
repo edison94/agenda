@@ -71,6 +71,32 @@ public class SearchDAOImpl implements ISearchDAO {
 		return q.getResultList();
 	}
 
+	@Transactional
+	public List<Persona> searchPersonasByDireccion(String direccion) {
+		System.out.println("entra dao");
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Persona> query = builder.createQuery(Persona.class);
+		Root<Persona> root = query.from(Persona.class);
+		Join<Persona,Telefono> join = root.join("direccion");
+		
+		System.out.println("works at least until 001");
+		Predicate like = builder.or(
+				builder.like( join.<String>get("direccion"),"%"+direccion+"%" ),
+				builder.like( join.<String>get("codPostal"),"%"+direccion+"%" ),
+				builder.like( join.<String>get("localidad"),"%"+direccion+"%" ),
+				builder.like( join.<String>get("provincia"),"%"+direccion+"%" )
+				
+			);
+		System.out.println("works at least until 002");
+		query.select(root);
+		query.where(like);
+		Query<Persona> q = session.createQuery(query);
+		System.out.println("sale DAO");
+		System.out.println(q.getResultList());
+		return q.getResultList();
+	}
+
 
 
 	@Transactional

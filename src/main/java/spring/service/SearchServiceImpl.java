@@ -25,6 +25,10 @@ public class SearchServiceImpl implements ISearchService {
 	}
 
 
+	public List<Persona> searchPersonasByDireccion(String direccion) {
+		return dao.searchPersonasByDireccion(direccion);
+	}
+
 
 	public List<Empleado> searchEmpleadosByDepartamento(String nombre) {
 		return dao.searchEmpleadosByDepartamento(nombre);
