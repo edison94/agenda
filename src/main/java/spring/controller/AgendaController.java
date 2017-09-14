@@ -288,8 +288,8 @@ public class AgendaController {
 		if (result.hasErrors()) {
 			return "formEmpleado";
 		}
-		empleadoService.saveOrUpdate(empleado);
 		personaService.saveOrUpdate(empleado.getPersonas());
+		empleadoService.saveOrUpdate(empleado);
 		return "redirect: /agenda/empleados";
 	}
 	

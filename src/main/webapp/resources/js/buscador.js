@@ -1,9 +1,13 @@
 $( document ).ready(function() {
+	$('.datepicker').datepicker({
+	    format: 'dd/mm/yyyy',
+	    todayBtn: "linked",
+	    language: "es"
+	});
 	$("select#sujeto").change(cargarOpciones);
 	$(".alert").alert()
 	$(".eliminar").click(function(){
-		
-		/*var entry = $(this).parent();
+		var entry = $(this).parent();
 		$.post( entry.attr("data-page") +"/delete", { id: entry.find("input").val() })
 		  .done(function(data) {
 			  if (!data.error){
@@ -12,17 +16,10 @@ $( document ).ready(function() {
 				  $('#myModal').modal('show');
 				  $('#myModal').find('.modal-body').html(data.error);
 			  }
-		  });*/
+		  });
 	});
 });
 
-$(function() {
-	$('.datepicker').datepicker({
-	    format: 'dd/mm/yyyy',
-	    todayBtn: "linked",
-	    language: "es"
-	});
-});
 
 function cargarOpciones() { 
 	var op = $(this).val() == "empleado"?0:1;
