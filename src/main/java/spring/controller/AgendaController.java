@@ -2,6 +2,8 @@ package spring.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -109,9 +111,6 @@ public class AgendaController {
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
-		System.out.println("entra controller");
-		searchService.searchPersonasByNombre("chez");
-		System.out.println("sale controller");
 		return new ModelAndView("home");
 	}
 
@@ -297,5 +296,25 @@ public class AgendaController {
 	public String deleteTelefono(@RequestParam int id) {
 		categoriaService.deleteCategoria(id);
 		return "redirect: /agenda/categorias";
+	}
+	
+	/**************************************************
+	 * Busqueda
+	 **************************************************/
+	@RequestMapping(value = "/buscar", method = RequestMethod.GET)
+	public String search(@RequestParam Map<String,String> requestParams,ModelMap model) {
+		System.out.println("entra en el metodo buscar");
+		System.out.println(requestParams.get("sujeto"));
+		String sujeto = requestParams.get("sujeto");
+		String criterio = requestParams.get("criterio");
+		if(sujeto.equals("empleado")){
+			model.addAttribute("empleados",searchService.searchEmpleadosByDepartamento("RRHH"));
+			return "empleados";
+		}else if (sujeto.equals("persona")){
+			model.addAttribute("personas",searchService.searchPersonasByNombre("Luis"));
+			return "personas";			
+		}
+		return "redirect: /agenda";
+		
 	}
 }
