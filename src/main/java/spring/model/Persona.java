@@ -133,11 +133,11 @@ public class Persona implements Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
-	public Set<Telefono> gettelefonos() {
+	public Set<Telefono> getTelefonos() {
 		return this.telefonos;
 	}
 
-	public void settelefonos(Set<Telefono> telefonos) {
+	public void setTelefonos(Set<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 
