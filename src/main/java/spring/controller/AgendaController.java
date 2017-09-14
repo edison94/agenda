@@ -106,7 +106,11 @@ public class AgendaController {
 	 * HOME
 	 **************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home() {
+	public ModelAndView home(ModelMap map) {
+		map.addAttribute("countPersonas", personaService.listarPersonas().size());
+		map.addAttribute("countEmpleados", personaService.listarPersonas().size());
+		map.addAttribute("countPersonas", personaService.listarPersonas().size());
+		map.addAttribute("countPersonas", personaService.listarPersonas().size());
 		return new ModelAndView("home");
 	}
 

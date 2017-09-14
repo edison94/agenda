@@ -15,25 +15,25 @@
 		<ul class="list-group">
 			<li class="list-group-item row">
 			<span class="col-4 text-left">Personas</span>
-			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">${countPersonas}</span></span>
 			<span class="col-4 text-right"><a class="btn btn-primary" href="personas"
 				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
 			<li class="list-group-item row">
 			<span class="col-4 text-left">Empleados</span>
-			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">${countEmpleados}</span></span>
 			<span class="col-4 text-right"><a class="btn btn-primary" href="empleados"
 				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
 			<li class="list-group-item row">
 			<span class="col-4 text-left">Categorías</span>
-			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">${countCategorias}</span></span>
 			<span class="col-4 text-right"><a class="btn btn-primary" href="categorias"
 				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
 			<li class="list-group-item row">
 			<span class="col-4 text-left">Departamentos</span>
-			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">0</span></span>
+			<span class="col-4 text-center"><span class="badge badge-pill badge-primary text-center">${countDepartamentos}</span></span>
 			<span class="col-4 text-right"><a class="btn btn-primary" href="departamentos"
 				role="button">Ir a la lista <i class="fa fa-external-link"></i></a></span>
 			</li>
