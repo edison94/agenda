@@ -338,6 +338,7 @@ public class AgendaController {
 	/**************************************************
 	 * Busqueda
 	 **************************************************/
+	//https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#criteria-typedquery
 	@RequestMapping(value = "/buscar", method = RequestMethod.GET)
 	public String search(@RequestParam Map<String,String> requestParams,ModelMap model) {
 		System.out.println("entra en el metodo buscar");

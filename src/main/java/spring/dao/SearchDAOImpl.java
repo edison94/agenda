@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import spring.model.Direccion;
 import spring.model.Empleado;
 import spring.model.Persona;
 import spring.model.Telefono;
@@ -120,11 +121,16 @@ public class SearchDAOImpl implements ISearchDAO {
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
 		Root<Empleado> root = query.from(Empleado.class);
+		Join<Empleado,Persona> join1 = root.join("personas");
+		Join<Persona,Telefono> join2 = join1.join("telefonos");
+
 		Predicate like = builder.and(
-			    builder.like( root.get("personas").get("telefonos").<String>get("telefono"),"%"+telefono+"%" )
+			    builder.like( join2.<String>get("telefono"),"%"+telefono+"%" )
 			);
+		
 		query.select(root);
 		query.where(like);
+		query.distinct(true);
 		Query<Empleado> q = session.createQuery(query);
 		return q.getResultList();
 	}
@@ -151,15 +157,20 @@ public class SearchDAOImpl implements ISearchDAO {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
-		Root<Empleado> root = query.from(Empleado.class);		
+		Root<Empleado> root = query.from(Empleado.class);	
+		Join<Empleado,Persona> join1 = root.join("personas");
+		Join<Persona,Direccion> join2 = join1.join("direccion");
+		
 		Predicate like = builder.or(
-				builder.like( root.get("personas").get("direccion").<String>get("direccion"),"%"+direccion+"%" ),
-				builder.like( root.get("personas").get("direccion").<String>get("codPostal"),"%"+direccion+"%" ),
-				builder.like( root.get("personas").get("direccion").<String>get("localidad"),"%"+direccion+"%" ),
-				builder.like( root.get("personas").get("direccion").<String>get("provincia"),"%"+direccion+"%" )
+				builder.like( join2.<String>get("direccion"),"%"+direccion+"%" ),
+				builder.like( join2.<String>get("codPostal"),"%"+direccion+"%" ),
+				builder.like( join2.<String>get("localidad"),"%"+direccion+"%" ),
+				builder.like( join2.<String>get("provincia"),"%"+direccion+"%" )
 			);
+		
 		query.select(root);
 		query.where(like);
+		query.distinct(true);
 		Query<Empleado> q = session.createQuery(query);
 		return q.getResultList();
 	}
