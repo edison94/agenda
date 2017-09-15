@@ -43,7 +43,7 @@
 							<c:forEach items="${personas}" var="persona">
 								<tr>
 									<td>${persona.nombre}</td>
-									<td>${persona.apellido1}${persona.apellido2}</td>
+									<td>${persona.apellido1} ${persona.apellido2}</td>
 									<td>${persona.dni}</td>
 									<td><fmt:formatDate pattern="dd/MM/yyyy"
 											value="${persona.fechaNacimiento}" /></td>
